@@ -13,6 +13,7 @@ import {
 } from '@angular/cdk/layout';
 import { Heading, HeadingService } from 'projects/templates/src/public-api';
 import { LayoutService } from '@core/services/layout.service';
+import { ConfigService } from '@core/services/config.service';
 
 @Directive()
 export abstract class InjectBase
@@ -21,13 +22,15 @@ export abstract class InjectBase
   private breakpointObserver!: BreakpointObserver;
   private mediaMatcher!: MediaMatcher;
   private removeEventListeners: { (): void }[];
-  protected changeDetectorRef!: ChangeDetectorRef;
   private headingService!: HeadingService;
+  protected configService!: ConfigService;
+  protected changeDetectorRef!: ChangeDetectorRef;
   protected layoutService!: LayoutService;
   constructor(injector: Injector) {
     super();
     this.breakpointObserver = injector.get(BreakpointObserver);
     this.mediaMatcher = injector.get(MediaMatcher);
+    this.configService = injector.get(ConfigService);
     this.changeDetectorRef = injector.get(ChangeDetectorRef);
     this.removeEventListeners = [];
     this.layoutService = injector.get(LayoutService);

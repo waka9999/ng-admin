@@ -1,0 +1,16 @@
+<ng-heading (toggle)="snav.toggle()" *ngIf="!mobile.isHandset"></ng-heading>
+<mat-sidenav-container class="sidenav-container" [hasBackdrop]="hasBackdrop">
+  <mat-sidenav
+    #snav
+    class="sidenav-menu"
+    [mode]="sideNavMode"
+    [opened]="showMenu"
+    [autoFocus]="false"
+  >
+    <ng-nav-list [items]="navItems" (close)="sidenavClose()"></ng-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-heading (toggle)="snav.toggle()" *ngIf="mobile.isHandset"></ng-heading>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

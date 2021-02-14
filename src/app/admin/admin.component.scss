@@ -1,0 +1,36 @@
+$ng-sidenav-menu-width: 240px !default;
+$ng-sidenav-content-open-height: 100vh !default;
+.sidenav-container {
+  .sidenav-menu {
+    width: $ng-sidenav-menu-width;
+  }
+  .mat-sidenav-content {
+    height:auto;
+  }
+}
+
+:host-context(.ng-web),
+:host-context(.ng-tablet) {
+  .mat-sidenav-content {
+    min-height: calc(100vh - 144px);
+  }
+}
+:host-context(.ng-handset) {
+  .mat-sidenav-content {
+    min-height: calc(100vh - 92px);
+  }
+}
+
+:host-context(.ng-web),
+:host-context(.ng-tablet) {
+  margin-top: 64px;
+}
+
+:host-context(.ng-handset) {
+  margin-top: 92px;
+}
+
+:host {
+  position: relative;
+  display: block;
+}

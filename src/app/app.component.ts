@@ -1,7 +1,6 @@
-import { Breakpoints, LayoutModule } from '@angular/cdk/layout';
+import { Breakpoints } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ElementRef,
   Injector,
@@ -19,10 +18,9 @@ import {
 } from '@angular/router';
 import { Container, Mobile } from '@core/models/layout';
 import { brand, header } from '@core/models/header';
-import { ConfigService } from '@core/services/config.service';
 import { InjectBase } from '@core/shared/inject.base';
 import { ProgressBarComponent } from 'projects/templates/src/public-api';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +38,6 @@ export class AppComponent extends InjectBase implements OnInit {
 
   constructor(
     injector: Injector,
-    private config: ConfigService,
     private title: Title,
     private elementRef: ElementRef,
     private renderer: Renderer2,
@@ -49,10 +46,6 @@ export class AppComponent extends InjectBase implements OnInit {
     super(injector);
   }
   ngOnInit(): void {
-    this.layoutService
-      .subject$()
-      .pipe(distinctUntilChanged())
-      .subscribe((layout) => console.log(layout));
     this.initConfig();
     this.initProgressbar();
 
@@ -71,7 +64,7 @@ export class AppComponent extends InjectBase implements OnInit {
     );
   }
   private initConfig(): void {
-    this.config
+    this.configService
       .subject$()
       .pipe(takeUntil(this.destroy$))
       .subscribe((c) => {

@@ -1,0 +1,16 @@
+<ng-progress-bar #progressbar></ng-progress-bar>
+<ng-header>
+  <ng-header-brand [brand]="brand" class="header-brand"></ng-header-brand>
+  <ng-header-navbar
+    class="header-navbar"
+    *ngIf="!mobile.isHandset"
+    [items]="header.navbarItems"
+  ></ng-header-navbar>
+  <ng-header-navbar
+    class="header-navbar-row"
+    *ngIf="mobile.isHandset"
+    [items]="header.navbarItems"
+  ></ng-header-navbar>
+  <ng-header-user class="header-menu" [user]="header.user"></ng-header-user>
+</ng-header>
+<router-outlet></router-outlet>

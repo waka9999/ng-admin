@@ -1,0 +1,25 @@
+@import "/node_modules/@angular/material/theming";
+@import "/projects/templates/src/lib/style/theme";
+
+@include mat-core();
+
+$ng-primary: mat-palette($mat-indigo);
+$ng-accent: mat-palette($mat-amber);
+$ng-warn: mat-palette($mat-red);
+$ng-light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $ng-primary,
+      accent: $ng-accent,
+      warn: $ng-warn,
+    ),
+  )
+);
+.ng-light-theme {
+  @include angular-material-theme($ng-light-theme);
+  @include ng-header-theme($ng-light-theme);
+  @include ng-heading-theme($ng-light-theme);
+  @include ng-nav-list-theme($ng-light-theme);
+  @include ng-error-theme($ng-light-theme);
+  @include ng-divider-theme($ng-light-theme);
+}

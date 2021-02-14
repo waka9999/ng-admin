@@ -1,0 +1,26 @@
+@import "./error-base";
+
+.ng-error {
+  @include ng-error-base;
+  .error-message {
+    @include ng-error-message;
+  }
+}
+
+.ng-web {
+  .ng-error {
+    @include ng-web-layout-ng-error;
+  }
+}
+
+.ng-tablet {
+  .ng-error {
+    @include ng-tablet-layout-ng-error;
+  }
+}
+
+.ng-handset {
+  .ng-error {
+    @include ng-handset-layout-ng-error;
+  }
+}

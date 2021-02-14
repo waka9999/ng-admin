@@ -1,0 +1,91 @@
+$ng-flex-justify-content-between: space-between;
+$ng-flex-align-items-center: center;
+
+@mixin _flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin _flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin _justify-content-align-items($justify: flex-start, $align: center) {
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin ng-flex-row-start-center {
+  @include _flex-row;
+  @include _justify-content-align-items();
+}
+
+@mixin ng-flex-row-center-center {
+  @include _flex-row;
+  @include _justify-content-align-items(center);
+}
+
+@mixin ng-flex-row-center-start {
+  @include _flex-row;
+  @include _justify-content-align-items(center, flex-start);
+}
+
+@mixin ng-flex-row-end-start {
+  @include _flex-row;
+  @include _justify-content-align-items(flex-end, flex-start);
+}
+
+@mixin ng-flex-row-center-start {
+  @include _flex-row;
+  @include _justify-content-align-items(center, flex-start);
+}
+
+@mixin ng-flex-row-between-start {
+  @include _flex-row;
+  @include _justify-content-align-items(space-between, flex-start);
+}
+
+@mixin ng-flex-row-between-center {
+  @include _flex-row;
+  @include _justify-content-align-items(space-between);
+}
+
+@mixin ng-flex-row-around-center {
+  @include _flex-row;
+  @include _justify-content-align-items(space-around);
+}
+
+@mixin ng-flex-row-end-center {
+  @include _flex-row;
+  @include _justify-content-align-items(flex-end);
+}
+
+@mixin ng-flex-column-start-start {
+  @include _flex-column;
+  @include _justify-content-align-items(flex-start, flex-start);
+}
+
+@mixin ng-flex-column-center-start {
+  @include _flex-column;
+  @include _justify-content-align-items(center, flex-start);
+}
+
+@mixin ng-flex-column-center-end {
+  @include _flex-column;
+  @include _justify-content-align-items(center, flex-end);
+}
+
+@mixin ng-flex-column-center-center {
+  @include _flex-column;
+  @include _justify-content-align-items(center);
+}
+
+@mixin ng-flex-column-start-center {
+  @include _flex-column;
+  @include _justify-content-align-items(flex-start, center);
+}
+@mixin ng-flex-column-around-start {
+  @include _flex-column;
+  @include _justify-content-align-items(space-around, flex-start);
+}

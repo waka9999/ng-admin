@@ -1,0 +1,50 @@
+@import "/projects/templates/src/lib/style/page";
+
+.ng-web {
+  main {
+    @include ng-web-layout-main;
+  }
+}
+
+.ng-tablet {
+  main {
+    @include ng-tablet-layout-main;
+  }
+}
+
+.ng-handset {
+  main {
+    @include ng-handset-layout-main;
+    table.overflow-table {
+      @include ng-main-margin-overflow;
+    }
+  }
+}
+
+.app-page {
+  @include relative-block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.column-center-center {
+  @include ng-flex-column-center-center;
+}
+
+.app-page-actions {
+  @include ng-flex-row-between-center;
+  margin-bottom: 1rem;
+  .actions-start {
+    @include ng-flex-row-start-center;
+  }
+  .actions-end {
+    @include ng-flex-row-end-center;
+  }
+  .action + .action,
+  .action + .ng-divider {
+    margin-left: 0.5rem;
+  }
+  .mat-button-wrapper {
+    @include ng-flex-row-around-center;
+  }
+}

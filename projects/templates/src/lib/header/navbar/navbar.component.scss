@@ -1,0 +1,10 @@
+@import "./navbar-base";
+
+.ng-handset {
+  .ng-header-navbar {
+    @include ng-handset-layout-header-navbar;
+    .mat-button {
+      @include ng-header-navbar-mat-button;
+    }
+  }
+}

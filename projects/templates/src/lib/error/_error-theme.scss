@@ -1,0 +1,21 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-error-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $foreground: mat-color($color, foreground);
+
+  .ng-error {
+    .error-code {
+      color: mat-color($primary);
+      font-size: calc(var(--ng-delta) * 6);
+      line-height: calc(var(--ng-delta) * 6);
+    }
+    .error-message {
+      color: mat-color($foreground, secondary-text);
+      height: calc(var(--ng-delta) * 6);
+      font-size: calc(var(--ng-delta) * 2);
+      line-height: calc(var(--ng-delta) * 2);
+    }
+  }
+}

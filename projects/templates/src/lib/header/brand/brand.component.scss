@@ -1,0 +1,7 @@
+@import "./brand-base";
+.ng-header-brand {
+  @include ng-header-brand-base;
+  .brand-name {
+    @include ng-header-brand-name;
+  }
+}

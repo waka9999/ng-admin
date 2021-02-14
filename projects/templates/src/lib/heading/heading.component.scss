@@ -1,0 +1,29 @@
+@import "./heading-base";
+
+.ng-heading {
+  @include ng-heading-base;
+  h2 {
+    @include ng-heading-h2-font;
+  }
+  .heading-btn {
+    @include ng-heading-button;
+  }
+}
+
+.ng-web {
+  .ng-heading {
+    @include ng-web-layout-ng-heading-padding;
+  }
+}
+
+.ng-tablet {
+  .ng-heading {
+    @include ng-tablet-layout-ng-heading-padding;
+  }
+}
+
+.ng-handset {
+  .ng-heading {
+    @include ng-handset-layout-ng-heading-padding;
+  }
+}

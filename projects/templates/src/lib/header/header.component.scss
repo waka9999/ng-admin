@@ -1,0 +1,21 @@
+@import "./header-base";
+
+.ng-header {
+  @include ng-header-base;
+}
+
+.ng-web {
+  .ng-header {
+    mat-toolbar {
+      @include ng-web-layout-header-toolbar;
+    }
+  }
+}
+
+.ng-tablet {
+  .ng-header {
+    mat-toolbar {
+      @include ng-tablet-layout-header-toolbar;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<mat-form-field class="example-form-field">
+  <span class="prefix-text" matPrefix>过滤</span>
+  <input matInput type="text" #input (keyup)="enter()" />
+  <button
+    color="primary"
+    mat-button
+    matSuffix
+    mat-icon-button
+    *ngIf="input.value"
+    (click)="input.value=''"
+  >
+    <span class="material-icons">close</span>
+  </button>
+</mat-form-field>

@@ -1,0 +1,14 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-nav-list-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $background: mat-color($color, background);
+
+  .ng-nav-list {
+    .mat-list-item.active {
+      color: mat-color($primary);
+      background-color: mat-color($background, hover);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-heading-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  .ng-heading {
+    background-color: mat-color($primary);
+    color: white;
+  }
+}

@@ -1,0 +1,6 @@
+@import "../../style/flex";
+
+@mixin ng-header-user-base {
+  flex: 1 0 auto;
+  @include ng-flex-row-end-center;
+}

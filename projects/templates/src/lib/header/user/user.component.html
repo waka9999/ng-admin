@@ -1,0 +1,15 @@
+<button
+  mat-button
+  [matMenuTriggerFor]="menu"
+>
+  <span>{{ user?.username }}</span>
+  <span class="material-icons">expand_more</span>
+</button>
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let item of user?.menuItems; let i = index">
+    <mat-divider *ngIf="beforeLogout(i)"></mat-divider>
+    <button mat-menu-item [title]="item?.title" (click)="click(item?.href)">
+      {{ item?.text }}
+    </button>
+  </ng-container>
+</mat-menu>

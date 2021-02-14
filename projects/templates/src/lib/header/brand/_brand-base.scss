@@ -1,0 +1,13 @@
+@import "../../style/flex";
+
+$ng-header-brand-min-width: 240px !default;
+@mixin ng-header-brand-base {
+  @include ng-flex-row-start-center;
+  min-width: $ng-header-brand-min-width;
+}
+
+@mixin ng-header-brand-name {
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 8px;
+}

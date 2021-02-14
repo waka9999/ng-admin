@@ -1,0 +1,21 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin _ng-header-toolbar-elevation {
+  @include mat-elevation(2);
+}
+
+@mixin ng-web-layout-header-toolbar {
+  @include _ng-header-toolbar-elevation;
+}
+
+@mixin ng-tablet-layout-header-toolbar {
+  @include _ng-header-toolbar-elevation;
+}
+
+@mixin ng-header-base {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: block;
+  z-index: 200;
+}

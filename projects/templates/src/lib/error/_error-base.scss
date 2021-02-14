@@ -1,0 +1,21 @@
+@import "../style/flex";
+
+@mixin ng-error-base {
+  @include ng-flex-row-around-center;
+}
+
+@mixin ng-error-message {
+  @include ng-flex-column-around-start;
+}
+
+@mixin ng-web-layout-ng-error {
+  width: 720px;
+}
+
+@mixin ng-tablet-layout-ng-error {
+  width: 540px;
+}
+
+@mixin ng-handset-layout-ng-error {
+  width: 360px;
+}

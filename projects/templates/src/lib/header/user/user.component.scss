@@ -1,0 +1,5 @@
+@import "./user-base";
+
+.ng-header-user {
+  @include ng-header-user-base;
+}

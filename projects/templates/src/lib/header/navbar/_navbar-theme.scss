@@ -1,0 +1,11 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-header-navbar-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+
+  .ng-header-navbar {
+    background-color: mat-color($primary);
+    color:white;
+  }
+}

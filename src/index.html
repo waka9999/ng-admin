@@ -1,13 +1,29 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>NgAdmin</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ng Admin</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico" />
+    <style type="text/css">
+      .app-loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 108px;
+        height: 108px;
+      }
+    </style>
 </head>
-<body>
-  <app-root></app-root>
-</body>
+  <body>
+    <app-root>
+      <img
+        class="app-loader"
+        src="data:image/svg+xml;base64,PHN2ZyBjbGFzcz0ic3Bpbm5lciIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHN0eWxlPi5zcGlubmVye2FuaW1hdGlvbjogcm90YXRvciA1cyBsaW5lYXIgaW5maW5pdGU7dHJhbnNmb3JtLW9yaWdpbjogY2VudGVyO292ZXJmbG93OiBoaWRkZW47fUBrZXlmcmFtZXMgcm90YXRvcnswJXt0cmFuc2Zvcm06cm90YXRlKDBkZWcpO30xMDAle3RyYW5zZm9ybTpyb3RhdGUoMzYwZGVnKTt9fS5wYXRoIHtzdHJva2UtZGFzaGFycmF5OjI3MDtzdHJva2UtZGFzaG9mZnNldDowO3RyYW5zZm9ybS1vcmlnaW46Y2VudGVyO3N0cm9rZTogIzM5NDlhYjthbmltYXRpb246IGRhc2ggMS40cyBlYXNlLWluLW91dCBpbmZpbml0ZTt9QGtleWZyYW1lcyBkYXNoezAle3N0cm9rZS1kYXNob2Zmc2V0OjI2NTt9NTAle3N0cm9rZS1kYXNob2Zmc2V0OjY1O3RyYW5zZm9ybTpyb3RhdGUoOTBkZWcpO30xMDAle3N0cm9rZS1kYXNob2Zmc2V0OiAyNjU7dHJhbnNmb3JtOnJvdGF0ZSgzNjBkZWcpO319PC9zdHlsZT48Y2lyY2xlIGNsYXNzPSJwYXRoIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIj48L2NpcmNsZT48L3N2Zz4="
+        alt="spinner"
+      />
+    </app-root>
+  </body>
 </html>

@@ -1,0 +1,8 @@
+@import "./blank-base";
+
+.ng-blank {
+  @include ng-blank-base;
+  img {
+    @include ng-blank-image;
+  }
+}

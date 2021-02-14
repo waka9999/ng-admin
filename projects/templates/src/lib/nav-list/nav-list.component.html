@@ -5,7 +5,6 @@
       [routerLink]="item?.href"
       [title]="item?.title"
       routerLinkActive="active"
-      *ngIf="item?.visible"
       (click)="click()"
     >
       {{ item?.text }}

@@ -3,8 +3,6 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
-  EventEmitter,
-  Input,
   Output,
   ElementRef,
   ViewChild,

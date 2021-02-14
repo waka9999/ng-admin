@@ -5,6 +5,8 @@ import {
   style,
   transition,
   trigger,
+  animateChild,
+  query,
 } from '@angular/animations';
 
 const metadata = animation(
@@ -29,5 +31,8 @@ const metadata = animation(
 );
 
 export const customAnimation = trigger('custom', [
-  transition('void => *', [useAnimation(metadata)]),
+  transition('void => *', [
+    useAnimation(metadata),
+    query('@*', animateChild(), { optional: true }),
+  ]),
 ]);

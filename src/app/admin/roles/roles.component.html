@@ -11,4 +11,57 @@
     venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
     non, imperdiet ipsum.
   </p>
+  <div class="app-page-actions">
+    <div class="actions-start">
+      <button
+        class="action"
+        mat-stroked-button
+        color="primary"
+        (click)="create()"
+      >
+        <span class="material-icons">add</span>
+        创建角色
+      </button>
+    </div>
+    <div class="actions-end">
+      <ng-filter class="action" (filter)="filter($event)"></ng-filter>
+      <span class="ng-divider"></span>
+      <button class="action" mat-icon-button color="primary">
+        <span class="material-icons">refresh</span>
+      </button>
+    </div>
+  </div>
+  <div class="page-table margin-overflow">
+    <mat-table [dataSource]="dataSource" [@slideUp]>
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.id }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> 角色名 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="readonly">
+        <mat-header-cell *matHeaderCellDef> 只读 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.readonly }} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        [@custom]="{ value: '*', params: { y: '100%' } }"
+      >
+      </mat-row>
+    </mat-table>
+    <ng-blank
+    [placeholder]="'未找到任何角色'"
+    *ngIf="dataSource.data.length === 0"
+  ></ng-blank>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+  </div>
 </main>

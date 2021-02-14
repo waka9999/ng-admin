@@ -1,4 +1,5 @@
 @import "/projects/templates/src/lib/style/page";
+@import "./table";
 
 .ng-web {
   main {
@@ -12,11 +13,16 @@
   }
 }
 
+@mixin ng-margin-overflow {
+  margin: 0 calc(var(--ng-delta) * -2);
+  width: calc(100% + calc(var(--ng-delta) * 4));
+}
+
 .ng-handset {
   main {
     @include ng-handset-layout-main;
-    table.overflow-table {
-      @include ng-main-margin-overflow;
+    .margin-overflow {
+      @include ng-margin-overflow;
     }
   }
 }

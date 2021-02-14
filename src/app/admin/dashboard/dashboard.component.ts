@@ -4,9 +4,9 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { customAnimation } from '@core/animation/custom';
 import { dashboardHeading } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
+import { customAnimation } from 'projects/templates/src/public-api';
 
 @Component({
   selector: 'app-admin-dashboard',

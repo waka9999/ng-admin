@@ -3,5 +3,4 @@ export interface NavListItem {
   href: string;
   title: string;
   text: string;
-  visible: boolean;
 }

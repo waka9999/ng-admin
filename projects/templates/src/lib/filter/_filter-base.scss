@@ -1,0 +1,28 @@
+@mixin _ng-filter-input {
+  .mat-form-field-infix {
+    border-top: 0;
+    width: 120px;
+    text-indent: 16px;
+    font-size: 0.875rem;
+  }
+  .mat-form-field-suffix {
+    align-self: flex-end;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  .mat-form-field-appearance-legacy .mat-form-field-underline {
+    bottom: 0;
+  }
+}
+
+@mixin ng-filter-base {
+  .prefix-text {
+    @include _ng-filter-input-prefix;
+  }
+  @include _ng-filter-input;
+}
+
+@mixin _ng-filter-input-prefix {
+  font-size: 0.875rem;
+}

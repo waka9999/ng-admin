@@ -1,0 +1,25 @@
+@import "../../style/flex";
+
+@mixin ng-text-statistic-base {
+  @include ng-flex-row-around-center;
+  min-width: 160px;
+  height: 64px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+@mixin ng-handset-layout-text-statistic {
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 96px;
+}
+
+@mixin ng-text-statistic-text-title {
+  display: block;
+}
+
+@mixin ng-text-statistic-text-value {
+  display: block;
+  a {
+    color: #3f51b5;
+  }
+}

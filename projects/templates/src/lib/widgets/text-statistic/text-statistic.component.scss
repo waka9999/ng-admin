@@ -1,0 +1,17 @@
+@import "./text-statistic-base";
+
+.ng-text-statistic {
+  @include ng-text-statistic-base;
+  .text-title {
+    @include ng-text-statistic-text-title;
+  }
+  .text-value {
+    @include ng-text-statistic-text-value;
+  }
+}
+
+.ng-handset {
+  .ng-text-statistic {
+    @include ng-handset-layout-text-statistic;
+  }
+}

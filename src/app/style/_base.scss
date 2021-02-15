@@ -54,3 +54,17 @@
     @include ng-flex-row-around-center;
   }
 }
+
+.app-page-statistics {
+  @include ng-flex-row-end-center;
+  margin-bottom: 1rem;
+  .ng-text-statistic + .ng-text-statistic {
+    margin-left: var(--ng-delta);
+  }
+}
+
+.ng-handset {
+  .app-page-statistics {
+    @include ng-flex-row-between-center;
+  }
+}

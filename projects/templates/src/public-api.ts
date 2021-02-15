@@ -6,3 +6,4 @@ export * from './lib/nav-list';
 export * from './lib/error';
 export * from './lib/filter';
 export * from './lib/blank';
+export * from './lib/widgets';

@@ -13,19 +13,20 @@ import { Role, ROLES_DATA } from '@core/models/roles';
 import { InjectBase } from '@core/shared/inject.base';
 import {
   customAnimation,
-  listSlideUp,
 } from 'projects/templates/src/public-api';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [customAnimation, listSlideUp],
+  animations: [customAnimation],
 })
 export class RolesComponent extends InjectBase implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'readonly'];
   dataSource = new MatTableDataSource<Role>(ROLES_DATA);
+  pageSize!:number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(injector: Injector, private router: Router) {
@@ -34,9 +35,16 @@ export class RolesComponent extends InjectBase implements OnInit {
 
   ngOnInit(): void {
     this.initHeading(rolesHeading);
-    this.dataSource.paginator = this.paginator;
+    this.initTable();
   }
 
+  private initTable(): void {
+    this.dataSource.paginator = this.paginator;
+    this.configService
+      .subject$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((c) => (this.pageSize = c.pageSize));
+  }
   create(): void {
     this.router.navigate(['/admin/roles/create']);
   }

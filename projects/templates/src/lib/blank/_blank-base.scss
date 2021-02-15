@@ -1,12 +1,15 @@
 @import "../style/flex";
 
+$ng-blank-min-height: calc(9rem + 2px) !default;
+$ng-blank-image-size: 4rem !default;
+
 @mixin ng-blank-base {
   @include ng-flex-column-center-center;
   width: 100%;
-  min-height: 160px;
+  min-height: $ng-blank-min-height;
 }
 
 @mixin ng-blank-image {
-  width: 64px;
-  height: 64px;
+  width: $ng-blank-image-size;
+  height: $ng-blank-image-size;
 }

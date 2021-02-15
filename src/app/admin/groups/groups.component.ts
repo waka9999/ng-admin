@@ -11,23 +11,21 @@ import { Router } from '@angular/router';
 import { Group, GROUPS_DATA } from '@core/models/groups';
 import { groupsHeading } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
-import {
-  customAnimation,
-  listSlideUp,
-} from 'projects/templates/src/public-api';
+import { customAnimation } from 'projects/templates/src/public-api';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-groups',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [customAnimation, listSlideUp],
+  animations: [customAnimation],
 })
 export class GroupsComponent extends InjectBase implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'department', 'organization'];
   // dataSource = GROUPS_DATA;
   dataSource = new MatTableDataSource<Group>([]);
-
+  pageSize!: number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(injector: Injector, private router: Router) {
@@ -36,9 +34,16 @@ export class GroupsComponent extends InjectBase implements OnInit {
 
   ngOnInit(): void {
     this.initHeading(groupsHeading);
-    this.dataSource.paginator = this.paginator;
+    this.initTable();
   }
 
+  private initTable(): void {
+    this.dataSource.paginator = this.paginator;
+    this.configService
+      .subject$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((c) => (this.pageSize = c.pageSize));
+  }
   create(): void {
     this.router.navigate(['/admin/groups/create']);
   }

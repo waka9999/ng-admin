@@ -1,6 +1,21 @@
-main {
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-table-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $foreground: mat-color($color, foreground);
+
+  .page-table{
+    @include mat-elevation(1);
+  }
+
   .mat-table .mat-header-cell {
     font-size: 14px;
     font-weight: bold;
+    background-color: #fafafa;
+    border-top: 1px solid mat-color($foreground, divider);
+  }
+  .mat-paginator{
+    background-color: #fafafa;
   }
 }

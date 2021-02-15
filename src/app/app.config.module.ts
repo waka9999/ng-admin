@@ -11,6 +11,7 @@ export function configFactory(): Config {
   return {
     name: '管理系统',
     theme: 'ng-light-theme',
+    pageSize: 10,
   };
 }
 

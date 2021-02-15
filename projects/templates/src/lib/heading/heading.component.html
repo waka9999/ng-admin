@@ -1,11 +1,17 @@
-<ng-container *ngIf="heading?.returnLink; else menu">
-  <a mat-icon-button class="heading-btn" [routerLink]="heading?.returnLink">
-    <span class="material-icons">arrow_back_ios_new</span>
+<ng-container [ngSwitch]="heading?.level">
+  <a *ngSwitchCase="0" mat-icon-button class="heading-btn" (click)="click()"
+    ><span class="material-icons">{{ heading?.icon }}</span>
   </a>
+  <a
+    *ngSwitchCase="1"
+    mat-icon-button
+    class="heading-btn"
+    [routerLink]="heading?.returnLink"
+  >
+    <span class="material-icons">{{ heading?.icon }}</span>
+  </a>
+  <span *ngSwitchCase="-1" class="material-icons heading-icon">{{
+    heading?.icon
+  }}</span>
 </ng-container>
-<ng-template #menu>
-  <a mat-icon-button class="heading-btn" (click)="click()"
-    ><span class="material-icons">menu</span>
-  </a>
-</ng-template>
 <h2>{{ heading?.text }}</h2>

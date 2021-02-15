@@ -11,6 +11,10 @@
     *ngIf="mobile.isHandset"
     [items]="header.navbarItems"
   ></ng-header-navbar>
-  <ng-header-user class="header-menu" [user]="header.user"></ng-header-user>
+  <ng-header-user class="header-menu" [user]="header.user">
+    <button mat-menu-item title="账号" (click)="account()">账号</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item title="注销" (click)="logout()">注销</button>
+  </ng-header-user>
 </ng-header>
 <router-outlet></router-outlet>

@@ -4,17 +4,8 @@ export interface HeaderNavbarItem {
   title: string;
   text: string;
 }
-
-export interface HeaderUserMenuItem {
-  id: number;
-  href: string;
-  title: string;
-  text: string;
-}
-
 export interface HeaderUser {
   username: string;
-  menuItems: HeaderUserMenuItem[];
 }
 
 export interface Header {
@@ -23,6 +14,6 @@ export interface Header {
 }
 
 export interface HeaderBrand {
-  icon?: string;
   name?: string;
+  icon?: string;
 }

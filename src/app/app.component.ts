@@ -19,8 +19,12 @@ import {
 import { Container, Mobile } from '@core/models/layout';
 import { brand, header } from '@core/models/header';
 import { InjectBase } from '@core/shared/inject.base';
-import { ProgressBarComponent } from 'projects/templates/src/public-api';
+import {
+  DialogComponent,
+  ProgressBarComponent,
+} from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +45,8 @@ export class AppComponent extends InjectBase implements OnInit {
     private title: Title,
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     super(injector);
   }
@@ -123,5 +128,25 @@ export class AppComponent extends InjectBase implements OnInit {
   private layoutPublish(mobile: Mobile) {
     this.mobile = mobile;
     this.layoutService.next(mobile);
+  }
+
+  account(): void {
+    this.router.navigate(['/account'])
+  }
+
+  logout(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '320px',
+      data: {
+        subject: '注销 ' + 'waka9999',
+        message: '是否注销当前用户？',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((ok) => {
+      if (ok) {
+        console.log('logout');
+      }
+    });
   }
 }

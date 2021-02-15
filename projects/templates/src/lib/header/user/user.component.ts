@@ -18,15 +18,7 @@ import { HeaderUser } from '../model';
 })
 export class UserComponent implements OnInit {
   @Input() user!: HeaderUser;
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  click(path?: string): void {
-    this.router.navigate([path]);
-  }
-
-  beforeLogout(i: number): boolean {
-    return this.user.menuItems.length - 1 === i;
-  }
 }

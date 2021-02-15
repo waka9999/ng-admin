@@ -2,7 +2,6 @@ import {
   Header,
   HeaderNavbarItem,
   HeaderUser,
-  HeaderUserMenuItem,
   HeaderBrand,
 } from 'projects/templates/src/public-api';
 
@@ -12,14 +11,8 @@ const navbarItems: HeaderNavbarItem[] = [
   { id: 3, href: '/about', title: '关于', text: '关于' },
 ];
 
-const userMenuItems: HeaderUserMenuItem[] = [
-  { id: 1, href: '/auth/preferences', title: '首选项', text: '首选项' },
-  { id: 2, href: '/auth/logout', title: '注销', text: '注销' },
-];
-
 export const headerUser: HeaderUser = {
   username: 'waka9999',
-  menuItems: userMenuItems,
 };
 
 export const header: Header = {

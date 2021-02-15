@@ -7,8 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'projects/templates/src/lib/header';
-import { ProgressBarModule } from 'projects/templates/src/public-api';
+import {
+  DialogModule,
+  ProgressBarModule,
+} from 'projects/templates/src/public-api';
 import { AppConfigModule } from './app.config.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,8 +25,10 @@ import { AppConfigModule } from './app.config.module';
     ProgressBarModule,
     HeaderModule,
     RouterModule,
+    DialogModule,
+    MatDividerModule,
+    MatMenuModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

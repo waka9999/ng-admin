@@ -1,0 +1,23 @@
+:host {
+    position: relative;
+    display: block;
+  }
+  
+  :host-context(.ng-web),
+  :host-context(.ng-tablet) {
+    margin-top: 64px;
+  }
+  
+  :host-context(.ng-handset) {
+    margin-top: 92px;
+    main {
+      margin: 0;
+    }
+  }
+  
+  :host {
+    main {
+      margin: 0 16%;
+    }
+  }
+  

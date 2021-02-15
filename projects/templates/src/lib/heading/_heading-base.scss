@@ -13,6 +13,13 @@ $ng-heading-h2-font-weight: 300 !default;
   line-height: 64px;
 }
 
+@mixin ng-heading-icon {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+}
+
 @mixin ng-heading-base {
   @include ng-flex-row-start-center;
 }

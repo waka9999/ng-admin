@@ -5,11 +5,13 @@ import { InjectBase } from '@core/shared/inject.base';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Mobile } from '@core/models/layout';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent extends InjectBase implements OnInit {
   mobile!: Mobile;

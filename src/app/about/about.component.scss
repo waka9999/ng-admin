@@ -1,22 +1,6 @@
-:host {
-  position: relative;
-  display: block;
-}
+@import "/node_modules/@angular/material/theming";
 
-:host-context(.ng-web),
-:host-context(.ng-tablet) {
-  margin-top: 64px;
-}
-
-:host-context(.ng-handset) {
-  margin-top: 92px;
-  main {
-    margin: 0;
-  }
-}
-
-:host {
-  main {
-    margin: 0 16%;
-  }
+.about-version,
+.about-date {
+  color: mat-color($mat-gray,500);
 }

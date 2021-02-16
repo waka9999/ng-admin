@@ -9,7 +9,11 @@ export class HeadingService {
   private subject: BehaviorSubject<Heading>;
 
   constructor() {
-    this.subject = new BehaviorSubject<Heading>({ text: '首页' });
+    this.subject = new BehaviorSubject<Heading>({
+      text: '首页',
+      level: -1,
+      icon: 'home',
+    });
   }
 
   next(heading: Heading): void {

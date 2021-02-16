@@ -16,6 +16,7 @@ import { distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [customAnimation],
+  host: { class: 'simple-page' },
 })
 export class AccountComponent extends InjectBase implements OnInit {
   mobile!: Mobile;

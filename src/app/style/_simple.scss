@@ -1,0 +1,34 @@
+@mixin ng-simple-page-typography {
+  h1 {
+    margin-bottom: calc(var(--ng-delta) * 2);
+  }
+}
+
+.simple-page {
+  position: relative;
+  display: block;
+  @include ng-simple-page-typography;
+}
+
+@mixin ng-simple-page {
+  .simple-page {
+    margin-top: 64px;
+    main {
+      margin: 0 16%;
+    }
+  }
+}
+
+.ng-web,
+.ng-tablet {
+  @include ng-simple-page;
+}
+
+.ng-handset {
+  .simple-page {
+    margin-top: 92px;
+    main {
+      margin: 0;
+    }
+  }
+}

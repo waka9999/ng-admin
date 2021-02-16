@@ -4,7 +4,14 @@
     value: '*',
     params: { opacity: '0.6' }
   }"
->  <h1>About</h1>
+>
+  <h1>{{ title! }}</h1>
+  <p>
+    版本号：<span class="about-version">{{ version! }}</span>
+  </p>
+  <p>
+    发布日期：<span class="about-date">{{ date! | date }}</span>
+  </p>
   <p>
     Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper
     velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse

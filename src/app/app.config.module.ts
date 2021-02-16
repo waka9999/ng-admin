@@ -10,6 +10,8 @@ import { APP_CONFIG, ConfigService } from '@core/services/config.service';
 export function configFactory(): Config {
   return {
     name: '管理系统',
+    version: '1.0.0',
+    releaseDate: Date.now().toString(),
     theme: 'ng-light-theme',
     pageSize: 10,
   };

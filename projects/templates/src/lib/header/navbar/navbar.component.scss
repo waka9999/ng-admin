@@ -1,5 +1,9 @@
 @import "./navbar-base";
 
+.ng-header-navbar{
+  @include ng-header-navbar-base;
+}
+
 .ng-handset {
   .ng-header-navbar {
     @include ng-handset-layout-header-navbar;

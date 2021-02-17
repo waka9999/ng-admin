@@ -1,8 +1,5 @@
-<button
-  mat-button
-  [matMenuTriggerFor]="menu"
->
-  <span>{{ user?.username }}</span>
+<button mat-button [matMenuTriggerFor]="menu">
+  <span>{{ name }}</span>
   <span class="material-icons">expand_more</span>
 </button>
 <mat-menu #menu="matMenu">

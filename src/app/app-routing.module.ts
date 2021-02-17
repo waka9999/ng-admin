@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@core/guard/auth.guard';
+import { CookieGuard } from '@core/guard/cookie.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/admin/dashboard',
+    redirectTo: '/admin',
     pathMatch: 'full',
   },
   {
@@ -19,8 +21,15 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),
+  },
+  {
+    path: 'auth',
+    canActivate: [CookieGuard],
+    loadChildren: () =>
+      import('./auth/auth.module').then((mod) => mod.AuthModule),
   },
   {
     path: 'unauthorized',

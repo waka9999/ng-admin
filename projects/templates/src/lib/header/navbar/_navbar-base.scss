@@ -1,10 +1,13 @@
 @import "../../style/flex";
 
+@mixin ng-header-navbar-base {
+  flex: 1 0 auto;
+}
+
 @mixin ng-handset-layout-header-navbar {
   @include ng-flex-row-around-center;
 }
 
 @mixin ng-header-navbar-mat-button {
-  flex: 1 0 auto;
   font-size: 14px;
 }

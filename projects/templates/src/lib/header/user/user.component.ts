@@ -5,8 +5,6 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { HeaderUser } from '../model';
 
 @Component({
   selector: 'ng-header-user',
@@ -17,7 +15,7 @@ import { HeaderUser } from '../model';
   host: { class: 'ng-header-user' },
 })
 export class UserComponent implements OnInit {
-  @Input() user!: HeaderUser;
+  @Input() name!: string | undefined;
   constructor() {}
 
   ngOnInit(): void {}

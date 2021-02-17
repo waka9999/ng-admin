@@ -5,3 +5,9 @@
     @include ng-header-brand-name;
   }
 }
+
+.ng-handset {
+  .ng-header-brand {
+    @include ng-handset-layout-header-brand;
+  }
+}

@@ -1,0 +1,22 @@
+@import "/projects/templates/src/lib/style/flex";
+
+:host {
+
+  @include ng-flex-column-center-center;
+  height: calc(100vh - 92px);
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .login-form {
+    @include ng-flex-column-start-stretch;
+
+    .form-actions{
+      button{
+        width:100%;
+      }
+    }
+  }
+}
+
+

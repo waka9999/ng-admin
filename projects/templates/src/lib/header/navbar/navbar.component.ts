@@ -16,7 +16,7 @@ import { HeaderNavbarItem } from '../model';
   host: { class: 'ng-header-navbar' },
 })
 export class NavbarComponent implements OnInit {
-  @Input() items!: HeaderNavbarItem[];
+  @Input() items!: HeaderNavbarItem[] | undefined;
   constructor() {}
 
   ngOnInit(): void {}

@@ -14,6 +14,8 @@ import {
 import { AppConfigModule } from './app.config.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { CookieService } from 'ngx-cookie-service';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,8 +29,10 @@ import { MatMenuModule } from '@angular/material/menu';
     RouterModule,
     DialogModule,
     MatDividerModule,
+    MatButtonModule,
     MatMenuModule,
   ],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

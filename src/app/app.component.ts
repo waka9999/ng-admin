@@ -1,5 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import {
+  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -17,14 +18,16 @@ import {
   Router,
 } from '@angular/router';
 import { Container, Mobile } from '@core/models/layout';
-import { brand, header } from '@core/models/header';
+import { adminItems, brand, navbarItems } from '@core/models/header';
 import { InjectBase } from '@core/shared/inject.base';
 import {
   DialogComponent,
+  Header,
   ProgressBarComponent,
 } from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +37,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppComponent extends InjectBase implements OnInit {
   brand = brand;
-  header = header;
+  header!: Header;
   mobile: Mobile = { isHandset: false, isTablet: false };
 
   @ViewChild('progressbar', { static: true })
@@ -46,14 +49,15 @@ export class AppComponent extends InjectBase implements OnInit {
     private elementRef: ElementRef,
     private renderer: Renderer2,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private auth: AuthService
   ) {
     super(injector);
   }
+
   ngOnInit(): void {
     this.initConfig();
     this.initProgressbar();
-
     this.initLayout(Breakpoints.Web, this.updateLayoutForWebChange.bind(this));
     this.initLayout(
       Breakpoints.Handset,
@@ -67,7 +71,9 @@ export class AppComponent extends InjectBase implements OnInit {
       '(max-width: 960px)',
       this.updateLayoutForMediaChange.bind(this)
     );
+    this.initHeader();
   }
+
   private initConfig(): void {
     this.configService
       .subject$()
@@ -130,8 +136,33 @@ export class AppComponent extends InjectBase implements OnInit {
     this.layoutService.next(mobile);
   }
 
+  private initHeader(): void {
+    this.auth
+      .current$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((u) => {
+        if (u.name !== '' || u.name) {
+          this.header = {
+            name: u.name,
+            navbarItems: adminItems.concat(navbarItems),
+          };
+        } else {
+          this.header = {
+            name: '',
+            navbarItems: navbarItems,
+          };
+        }
+
+        this.changeDetectorRef.markForCheck();
+      });
+  }
+
+  hasLogin(): boolean {
+    return this.auth.isLogin();
+  }
+
   account(): void {
-    this.router.navigate(['/account'])
+    this.router.navigate(['/account']);
   }
 
   logout(): void {
@@ -145,7 +176,8 @@ export class AppComponent extends InjectBase implements OnInit {
 
     dialogRef.afterClosed().subscribe((ok) => {
       if (ok) {
-        console.log('logout');
+        this.header.name = undefined;
+        this.auth.logout();
       }
     });
   }

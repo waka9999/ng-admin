@@ -15,6 +15,7 @@ $ng-light-theme: mat-light-theme(
     ),
   )
 );
+
 .ng-light-theme {
   @include angular-material-theme($ng-light-theme);
   @include ng-header-theme($ng-light-theme);
@@ -24,4 +25,12 @@ $ng-light-theme: mat-light-theme(
   @include ng-divider-theme($ng-light-theme);
   @include ng-blank-theme($ng-light-theme);
   @include ng-table-theme($ng-light-theme);
+}
+
+@import "../about/about-theme";
+@import "../account/account-theme";
+
+.ng-light-theme {
+  @include app-about-theme($ng-light-theme);
+  @include app-account-theme($ng-light-theme);
 }

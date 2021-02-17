@@ -12,7 +12,7 @@ import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
   styleUrls: ['./about.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [customAnimation],
-  host: { class: 'simple-page' },
+  host: { class: 'app-about simple-page' },
 })
 export class AboutComponent extends InjectBase implements OnInit {
   title!: string;

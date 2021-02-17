@@ -4,11 +4,12 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { accountHeading } from '@core/models/heading';
 import { Mobile } from '@core/models/layout';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { distinctUntilChanged, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',
@@ -16,12 +17,13 @@ import { distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./account.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [customAnimation],
-  host: { class: 'simple-page' },
+  host: { class: 'app-account simple-page' },
 })
 export class AccountComponent extends InjectBase implements OnInit {
   mobile!: Mobile;
+  active: 'profile' | 'password' = 'profile';
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private router: Router) {
     super(injector);
   }
 
@@ -31,5 +33,28 @@ export class AccountComponent extends InjectBase implements OnInit {
       .pipe(distinctUntilChanged())
       .subscribe((mobile) => (this.mobile = mobile));
     this.initHeading(accountHeading);
+    this.initTabsRoute();
+  }
+
+  private initTabsRoute(): void {
+    if (this.router.url.endsWith('profile')) {
+      this.active = 'profile';
+      return;
+    }
+
+    if (this.router.url.endsWith('password')) {
+      this.active = 'password';
+      return;
+    }
+  }
+
+  profile(): void {
+    this.active = 'profile';
+    this.router.navigate(['/account/profile']);
+  }
+
+  password(): void {
+    this.active = 'password';
+    this.router.navigate(['/account/password']);
   }
 }

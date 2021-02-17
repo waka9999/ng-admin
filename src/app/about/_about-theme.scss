@@ -1,0 +1,12 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin app-about-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $foreground: mat-color($color, foreground);
+  .app-about {
+    .about-version,
+    .about-date {
+      color: mat-color($foreground, secondary-text);
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@import "./profile/profile-theme";
+
+@mixin app-account-theme($theme) {
+  @include app-acount-profile-theme($theme);
+}

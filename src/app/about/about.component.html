@@ -1,11 +1,11 @@
-<ng-heading *ngIf="!mobile.isHandset"></ng-heading>
+<ng-heading></ng-heading>
 <main
   [@custom]="{
     value: '*',
     params: { opacity: '0.6' }
   }"
 >
-  <h1>{{ title! }}</h1>
+  <h3>{{ title! }}</h3>
   <p>
     版本号：<span class="about-version">{{ version! }}</span>
   </p>

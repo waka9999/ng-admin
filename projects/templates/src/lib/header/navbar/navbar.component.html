@@ -1,5 +1,16 @@
 <ng-container *ngFor="let item of items">
-  <a mat-button [routerLink]="item?.href" [title]="item?.title">{{
-    item?.text
-  }}</a>
+  <ng-container *ngIf="item?.permission">
+    <a
+      mat-button
+      [routerLink]="item?.href"
+      [title]="item?.title"
+      [ngHideIfUnauthorized]="item?.permission"
+      >{{ item?.text }}</a
+    >
+  </ng-container>
+  <ng-container *ngIf="!item?.permission">
+    <a mat-button [routerLink]="item?.href" [title]="item?.title">{{
+      item?.text
+    }}</a>
+  </ng-container>
 </ng-container>

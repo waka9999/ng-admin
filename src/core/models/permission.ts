@@ -1,8 +1,8 @@
 export interface Permission {
   id: number;
   href: string;
-  title: string;
-  text: string;
+  name: string;
+  description: string;
   inputDate: string;
   updateDate: string;
 }
@@ -11,33 +11,42 @@ export const PERMISSIONS_DATA: Permission[] = [
   {
     id: 1,
     href: '/admin/dashboard',
-    title: '仪表盘',
-    text: '仪表盘',
+    name: 'dashboard',
+    description: '仪表盘',
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
   {
     id: 2,
     href: '/admin/users',
-    title: '用户',
-    text: '用户',
+    name: 'users',
+    description: '用户',
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
   {
     id: 3,
     href: '/admin/roles',
-    title: '角色',
-    text: '角色',
+    name: 'roles',
+    description: '角色',
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
   {
     id: 4,
     href: '/admin/groups',
-    title: '项目组',
-    text: '项目组',
+    name: 'groups',
+    description: '项目组',
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
 ];
+
+export const PERMISSIONS = {
+  Writeable: 'writeable',
+  Admin: 'admin',
+  Dashboard: 'dashboard',
+  Users: 'users',
+  Roles: 'roles',
+  Groups: 'groups',
+};

@@ -4,7 +4,7 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { dashboardHeading } from '@core/models/heading';
+import { DASHBOARD_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
 
@@ -21,6 +21,6 @@ export class DashboardComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initHeading(dashboardHeading);
+    this.initHeading(DASHBOARD_HEADING);
   }
 }

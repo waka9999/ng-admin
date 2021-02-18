@@ -1,0 +1,5 @@
+@import "./menu-base";
+
+.ng-header-menu{
+  @include ng-header-menu-base;
+}

@@ -10,7 +10,9 @@ import {
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [
+    AdminComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,

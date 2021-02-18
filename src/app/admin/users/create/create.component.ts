@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
-import { usersCreateHeading } from '@core/models/heading';
+import { USERS_CREATE_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
 
@@ -16,6 +16,6 @@ export class CreateComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initHeading(usersCreateHeading);
+    this.initHeading(USERS_CREATE_HEADING);
   }
 }

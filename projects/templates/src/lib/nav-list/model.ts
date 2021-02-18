@@ -3,4 +3,5 @@ export interface NavListItem {
   href: string;
   title: string;
   text: string;
+  permission?: string;
 }

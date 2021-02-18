@@ -1,6 +1,5 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import {
-  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -17,27 +16,28 @@ import {
   RouteConfigLoadStart,
   Router,
 } from '@angular/router';
-import { Container, Mobile } from '@core/models/layout';
-import { adminItems, brand, navbarItems } from '@core/models/header';
+import { CONTAINER, Mobile } from '@core/models/layout';
+import { BRAND, HEADER_NAVBAR_ITEMS } from '@core/models/header';
 import { InjectBase } from '@core/shared/inject.base';
 import {
   DialogComponent,
-  Header,
   ProgressBarComponent,
 } from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '@core/services/auth.service';
+import { User } from '@core/models/users';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent extends InjectBase implements OnInit {
-  brand = brand;
-  header!: Header;
+  headerItems = HEADER_NAVBAR_ITEMS;
+  brand = BRAND;
+  username!: string;
   mobile: Mobile = { isHandset: false, isTablet: false };
 
   @ViewChild('progressbar', { static: true })
@@ -106,26 +106,26 @@ export class AppComponent extends InjectBase implements OnInit {
   }
 
   private updateLayoutForWebChange(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, Container.Web);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Tablet);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Handset);
+    this.renderer.addClass(this.elementRef.nativeElement, CONTAINER.Web);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Tablet);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Handset);
 
     this.layoutPublish({ isHandset: false, isTablet: false });
     this.changeDetectorRef.markForCheck();
   }
 
   private updateLayoutForTabletChange(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, Container.Tablet);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Web);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Handset);
+    this.renderer.addClass(this.elementRef.nativeElement, CONTAINER.Tablet);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Web);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Handset);
     this.layoutPublish({ isHandset: false, isTablet: true });
     this.changeDetectorRef.markForCheck();
   }
 
   private updateLayoutForHandSetChange(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, Container.Handset);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Tablet);
-    this.renderer.removeClass(this.elementRef.nativeElement, Container.Web);
+    this.renderer.addClass(this.elementRef.nativeElement, CONTAINER.Handset);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Tablet);
+    this.renderer.removeClass(this.elementRef.nativeElement, CONTAINER.Web);
 
     this.layoutPublish({ isHandset: true, isTablet: false });
     this.changeDetectorRef.markForCheck();
@@ -140,19 +140,10 @@ export class AppComponent extends InjectBase implements OnInit {
     this.auth
       .current$()
       .pipe(takeUntil(this.destroy$))
-      .subscribe((u) => {
-        if (u.name !== '' || u.name) {
-          this.header = {
-            name: u.name,
-            navbarItems: adminItems.concat(navbarItems),
-          };
-        } else {
-          this.header = {
-            name: '',
-            navbarItems: navbarItems,
-          };
+      .subscribe((user) => {
+        if (user.name !== '' || user.name) {
+          this.username = user.name;
         }
-
         this.changeDetectorRef.markForCheck();
       });
   }
@@ -169,14 +160,14 @@ export class AppComponent extends InjectBase implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '320px',
       data: {
-        subject: '注销 ' + 'waka9999',
+        subject: '注销 ' + this.auth.current().name,
         message: '是否注销当前用户？',
       },
     });
 
     dialogRef.afterClosed().subscribe((ok) => {
       if (ok) {
-        this.header.name = undefined;
+        this.username = '';
         this.auth.logout();
       }
     });

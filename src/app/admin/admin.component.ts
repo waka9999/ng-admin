@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { navListItems } from '@core/models/sidenav';
+import { NAV_LIST_ITEMS } from '@core/models/sidenav';
 import { InjectBase } from '@core/shared/inject.base';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Mobile } from '@core/models/layout';
@@ -20,7 +20,7 @@ export class AdminComponent extends InjectBase implements OnInit {
   sideNavMode: 'over' | 'push' | 'side' = 'over';
   hasBackdrop: boolean = false;
 
-  navItems = navListItems;
+  navItems = NAV_LIST_ITEMS;
 
   @ViewChild('snav', { static: true })
   snav!: MatSidenav;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { unauthorized } from '@core/models/error';
+import { UNAUTHORIZED } from '@core/models/error';
 
 @Component({
   selector: 'app-unauthorized',
@@ -9,7 +9,7 @@ import { unauthorized } from '@core/models/error';
   host: { class: 'app-page column-center-center' },
 })
 export class UnauthorizedComponent implements OnInit {
-  unauthorized = unauthorized;
+  unauthorized = UNAUTHORIZED;
 
   constructor() {}
 

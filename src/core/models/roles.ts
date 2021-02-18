@@ -1,37 +1,56 @@
-import { Permission } from './permission';
+import { PERMISSIONS } from './permission';
 
 export interface Role {
   id: number;
   name: string;
-  permissionsId: number[];
+  description: string;
+  permissions: string[];
   readonly: boolean;
   inputDate: string;
   updateDate: string;
 }
 
-export const ROLES_DATA: Role[] = [
-  {
-    id: 1,
-    name: 'Admin',
-    permissionsId: [1, 2, 3, 4],
-    readonly: false,
-    inputDate: Date.now().toString(),
-    updateDate: Date.now().toString(),
-  },
-  {
-    id: 2,
-    name: 'User',
-    permissionsId: [1, 2],
-    readonly: false,
-    inputDate: Date.now().toString(),
-    updateDate: Date.now().toString(),
-  },
-  {
-    id: 3,
-    name: 'Readonly',
-    permissionsId: [1, 2, 3, 4],
-    readonly: true,
-    inputDate: Date.now().toString(),
-    updateDate: Date.now().toString(),
-  },
-];
+export const roleAdmin = {
+  id: 1,
+  name: 'Admin',
+  description: '管理员',
+  permissions: [
+    PERMISSIONS.Writeable,
+    PERMISSIONS.Admin,
+    PERMISSIONS.Dashboard,
+    PERMISSIONS.Users,
+    PERMISSIONS.Roles,
+    PERMISSIONS.Groups,
+  ],
+  readonly: false,
+  inputDate: Date.now().toString(),
+  updateDate: Date.now().toString(),
+};
+
+export const roleUser = {
+  id: 2,
+  name: 'User',
+  description: '用户',
+  permissions: [PERMISSIONS.Dashboard],
+  readonly: false,
+  inputDate: Date.now().toString(),
+  updateDate: Date.now().toString(),
+};
+
+export const roleReadonly = {
+  id: 3,
+  name: 'Readonly',
+  description: '只读',
+  permissions: [
+    PERMISSIONS.Admin,
+    PERMISSIONS.Dashboard,
+    PERMISSIONS.Users,
+    PERMISSIONS.Roles,
+    PERMISSIONS.Groups,
+  ],
+  readonly: true,
+  inputDate: Date.now().toString(),
+  updateDate: Date.now().toString(),
+};
+
+export const ROLES_DATA: Role[] = [roleAdmin, roleUser, roleReadonly];

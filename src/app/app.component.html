@@ -2,20 +2,21 @@
 <ng-header>
   <ng-header-brand [brand]="brand" class="header-brand"></ng-header-brand>
   <ng-header-navbar
+    [items]="headerItems"
     class="header-navbar"
     *ngIf="!mobile.isHandset"
-    [items]="header?.navbarItems"
   ></ng-header-navbar>
   <ng-header-navbar
+    [items]="headerItems"
     class="header-navbar-row"
     *ngIf="mobile.isHandset"
-    [items]="header.navbarItems"
-  ></ng-header-navbar>
-  <ng-header-user class="header-end" [name]="header?.name" *ngIf="hasLogin()">
+  >
+  </ng-header-navbar>
+  <ng-header-menu class="header-end" [username]="username" *ngIf="hasLogin()">
     <button mat-menu-item title="账号" (click)="account()">账号</button>
     <mat-divider></mat-divider>
     <button mat-menu-item title="注销" (click)="logout()">注销</button>
-  </ng-header-user>
+  </ng-header-menu>
   <a
     mat-button
     class="header-end"

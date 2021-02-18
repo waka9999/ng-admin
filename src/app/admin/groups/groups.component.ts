@@ -8,8 +8,8 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Group, GROUPS_DATA } from '@core/models/groups';
-import { groupsHeading } from '@core/models/heading';
+import { Group } from '@core/models/groups';
+import { GROUPS_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
@@ -33,7 +33,7 @@ export class GroupsComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initHeading(groupsHeading);
+    this.initHeading(GROUPS_HEADING);
     this.initTable();
   }
 

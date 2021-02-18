@@ -8,3 +8,4 @@ export * from './lib/filter';
 export * from './lib/blank';
 export * from './lib/widgets';
 export * from './lib/dialog';
+export * from "./lib/authorized";

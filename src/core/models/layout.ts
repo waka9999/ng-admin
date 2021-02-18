@@ -1,4 +1,4 @@
-export const Container = {
+export const CONTAINER = {
   Web: 'ng-web',
   Tablet: 'ng-tablet',
   Handset: 'ng-handset',

@@ -1,6 +1,18 @@
 <mat-nav-list>
   <ng-container *ngFor="let item of items">
     <a
+      *ngIf="item?.permission"
+      [ngHideIfUnauthorized]="item?.permission"
+      mat-list-item
+      [routerLink]="item?.href"
+      [title]="item?.title"
+      routerLinkActive="active"
+      (click)="click()"
+    >
+      {{ item?.text }}
+    </a>
+    <a
+      *ngIf="!item?.permission"
       mat-list-item
       [routerLink]="item?.href"
       [title]="item?.title"

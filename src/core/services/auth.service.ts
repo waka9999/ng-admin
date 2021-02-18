@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from '@core/models/message';
-import { blankUser, User, USERS_DATA } from '@core/models/users';
+import { BLANK_USER, User, USERS_DATA } from '@core/models/users';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';
-import { Header } from 'projects/templates/src/lib/header';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private header$: BehaviorSubject<User> = new BehaviorSubject(blankUser);
+  private user$: BehaviorSubject<User> = new BehaviorSubject(BLANK_USER);
 
   private readonly key = '12345678234567891234567823456789';
   private user!: User | undefined;
@@ -38,7 +37,7 @@ export class AuthService {
       ).pipe(
         take(1),
         tap(() => {
-          this.header$.next(this.user!);
+          this.user$.next(this.user!);
           this.router.navigateByUrl(this.generateUrl());
         })
       );
@@ -53,7 +52,11 @@ export class AuthService {
   }
 
   current$(): BehaviorSubject<User> {
-    return this.header$;
+    return this.user$;
+  }
+
+  current(): User {
+    return this.user!;
   }
 
   logout(): void {
@@ -71,7 +74,7 @@ export class AuthService {
     this.cookie.deleteAll('/');
     this.user = undefined;
     this.url = undefined;
-    this.header$.complete();
+    this.user$.complete();
   }
 
   private generateUrl(): string {
@@ -117,7 +120,7 @@ export class AuthService {
     }
 
     this.user = user;
-    this.header$.next(this.user!);
+    this.user$.next(this.user!);
 
     return true;
   }

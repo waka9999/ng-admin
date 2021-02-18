@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { usersHeading } from '@core/models/heading';
+import { USERS_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
 import { User, USERS_DATA } from '@core/models/users';
 import { Router } from '@angular/router';
@@ -32,7 +32,7 @@ export class UsersComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initHeading(usersHeading);
+    this.initHeading(USERS_HEADING);
     this.initTable();
   }
 

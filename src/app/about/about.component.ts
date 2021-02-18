@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Injector } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { aboutHeading } from '@core/models/heading';
+import { ABOUT_HEADING } from '@core/models/heading';
 import { Mobile } from '@core/models/layout';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
@@ -29,7 +29,7 @@ export class AboutComponent extends InjectBase implements OnInit {
       .subject$()
       .pipe(distinctUntilChanged())
       .subscribe((mobile) => (this.mobile = mobile));
-    this.initHeading(aboutHeading);
+    this.initHeading(ABOUT_HEADING);
     this.initConfig();
   }
   private initConfig(): void {

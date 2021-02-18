@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { notfound } from '@core/models/error';
+import { NOT_FOUND } from '@core/models/error';
 
 @Component({
   selector: 'app-not-found',
@@ -9,7 +9,7 @@ import { notfound } from '@core/models/error';
   host: { class: 'app-page column-center-center' },
 })
 export class NotFoundComponent implements OnInit {
-  notfound = notfound;
+  notfound = NOT_FOUND;
   constructor() {}
 
   ngOnInit(): void {}

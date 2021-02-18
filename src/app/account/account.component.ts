@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { accountHeading } from '@core/models/heading';
+import { ACCOUNT_HEADING } from '@core/models/heading';
 import { Mobile } from '@core/models/layout';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
@@ -32,7 +32,7 @@ export class AccountComponent extends InjectBase implements OnInit {
       .subject$()
       .pipe(distinctUntilChanged())
       .subscribe((mobile) => (this.mobile = mobile));
-    this.initHeading(accountHeading);
+    this.initHeading(ACCOUNT_HEADING);
     this.initTabsRoute();
   }
 

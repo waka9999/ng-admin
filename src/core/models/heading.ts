@@ -1,43 +1,43 @@
 import { Heading } from 'projects/templates/src/public-api';
 
-export const dashboardHeading: Heading = {
+export const DASHBOARD_HEADING: Heading = {
   text: '仪表盘',
   level: 0,
   icon: 'menu',
 };
 
-export const usersHeading: Heading = {
+export const USERS_HEADING: Heading = {
   text: '用户',
   level: 0,
   icon: 'menu',
 };
 
-export const usersCreateHeading: Heading = {
+export const USERS_CREATE_HEADING: Heading = {
   text: '创建用户',
   level: 1,
   icon: 'arrow_back_ios_new',
   returnLink: '/admin/users',
 };
 
-export const rolesHeading: Heading = {
+export const ROLES_HEADING: Heading = {
   text: '角色',
   level: 0,
   icon: 'menu',
 };
 
-export const groupsHeading: Heading = {
+export const GROUPS_HEADING: Heading = {
   text: '项目组',
   level: 0,
   icon: 'menu',
 };
 
-export const aboutHeading: Heading = {
+export const ABOUT_HEADING: Heading = {
   text: '关于',
   level: -1,
   icon: 'copyright',
 };
 
-export const accountHeading: Heading = {
+export const ACCOUNT_HEADING: Heading = {
   text: '账号',
   level: -1,
   icon: 'person',

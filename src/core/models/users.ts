@@ -1,16 +1,19 @@
+import { Group } from './groups';
+import { Role, roleAdmin, roleReadonly, roleUser } from './roles';
+
 export interface User {
   id: number;
   name: string;
   username: string;
   password?: string;
   state: number;
-  roleId?: number;
-  groupsId?: number[];
+  role?: Role;
+  groups?: Group[];
   inputDate?: string;
   updateDate?: string;
 }
 
-export const blankUser = {
+export const BLANK_USER = {
   id: 0,
   name: '',
   username: '',
@@ -24,7 +27,7 @@ export const USERS_DATA: User[] = [
     username: 'waka9999',
     password: '123456',
     state: 1,
-    roleId: 1,
+    role: roleAdmin,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
@@ -34,7 +37,7 @@ export const USERS_DATA: User[] = [
     username: 'user',
     password: '123456',
     state: 1,
-    roleId: 2,
+    role: roleUser,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
@@ -44,7 +47,7 @@ export const USERS_DATA: User[] = [
     username: 'readonly',
     password: '123456',
     state: 1,
-    roleId: 3,
+    role: roleReadonly,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },

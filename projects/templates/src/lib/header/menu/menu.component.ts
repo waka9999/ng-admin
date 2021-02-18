@@ -7,15 +7,15 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'ng-header-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  selector: 'ng-header-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'ng-header-user' },
+  host: { class: 'ng-header-menu' },
 })
-export class UserComponent implements OnInit {
-  @Input() name!: string | undefined;
+export class MenuComponent implements OnInit {
+  @Input() username!: string | undefined;
   constructor() {}
 
   ngOnInit(): void {}

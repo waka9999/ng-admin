@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
-import { HeadingModule } from 'projects/templates/src/public-api';
+import {
+  AuthorizedModule,
+  HeadingModule,
+} from 'projects/templates/src/public-api';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ProfileComponent } from './profile/profile.component';
 import { PasswordComponent } from './password/password.component';
@@ -26,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
+    AuthorizedModule,
   ],
 })
 export class AccountModule {}

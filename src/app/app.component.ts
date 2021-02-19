@@ -26,7 +26,6 @@ import {
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthenticationService } from '@core/services/authentication.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

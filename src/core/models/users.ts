@@ -6,6 +6,9 @@ export interface User {
   name: string;
   username: string;
   password?: string;
+  email: string;
+  department: string;
+  orgnazation: string;
   state: number;
   role?: Role;
   groups?: Group[];
@@ -13,11 +16,14 @@ export interface User {
   updateDate?: string;
 }
 
-export const BLANK_USER = {
-  id: 0,
+export const BLANK_USER: User = {
+  id: -1,
   name: '',
   username: '',
-  state: 0,
+  email: '',
+  department: '',
+  orgnazation: '',
+  state: -1,
 };
 
 export const USERS_DATA: User[] = [
@@ -26,6 +32,9 @@ export const USERS_DATA: User[] = [
     name: '哇咔',
     username: 'waka9999',
     password: '123456',
+    email: 'foo@bar.com',
+    department: '部门',
+    orgnazation: '组织',
     state: 1,
     role: roleAdmin,
     inputDate: Date.now().toString(),
@@ -36,6 +45,9 @@ export const USERS_DATA: User[] = [
     name: '用户',
     username: 'user',
     password: '123456',
+    email: 'foo@bar.com',
+    department: '部门',
+    orgnazation: '组织',
     state: 1,
     role: roleUser,
     inputDate: Date.now().toString(),
@@ -46,6 +58,9 @@ export const USERS_DATA: User[] = [
     name: '只读',
     username: 'readonly',
     password: '123456',
+    email: 'foo@bar.com',
+    department: '部门',
+    orgnazation: '组织',
     state: 1,
     role: roleReadonly,
     inputDate: Date.now().toString(),

@@ -29,7 +29,7 @@ export class DisableIfUnauthorizedDirective implements AfterViewInit {
         if (b) {
           this.renderer.removeClass(
             this.elementRef.nativeElement,
-            'mat-button-disabled'
+            'disabled'
           );
           this.renderer.setProperty(
             this.elementRef.nativeElement,
@@ -39,7 +39,7 @@ export class DisableIfUnauthorizedDirective implements AfterViewInit {
         } else {
           this.renderer.addClass(
             this.elementRef.nativeElement,
-            'mat-button-disabled'
+            'disabled'
           );
           this.renderer.setProperty(
             this.elementRef.nativeElement,

@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { User } from '@core/models/users';
+import { AuthenticationService } from '@core/services/authentication.service';
 
 @Component({
   selector: 'app-account-profile',
@@ -9,7 +11,10 @@ import { Component, OnInit } from '@angular/core';
   host: { class: 'app-account-profile' },
 })
 export class ProfileComponent implements OnInit {
-  constructor() {}
+  user!: User;
+  constructor(private auth: AuthenticationService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = this.auth.current();
+  }
 }

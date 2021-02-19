@@ -9,3 +9,10 @@
 .hidden {
   display: none !important;
 }
+
+.disabled {
+  pointer-events: none !important;
+  cursor: default !important;
+  color: rgba(0, 0, 0, 0.26) !important;
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}

@@ -1,15 +1,27 @@
-<div class="info-line">姓名: <span class="profile-info">哇咔</span></div>
+<div class="info-line">
+  姓名: <span class="profile-info">{{ user?.name }}</span>
+</div>
 
-<div class="info-line">用户名: <span class="profile-info">waka9999</span></div>
+<div class="info-line">
+  用户名: <span class="profile-info">{{ user?.username }}</span>
+</div>
 
-<div class="info-line">部门: <span class="profile-info">网研中心</span></div>
+<div class="info-line">
+  邮箱: <span class="profile-info">{{ user?.email }}</span>
+</div>
 
-<div class="info-line">组织: <span class="profile-info">设计院</span></div>
+<div class="info-line">
+  部门: <span class="profile-info">{{ user?.department }}</span>
+</div>
+
+<div class="info-line">
+  组织: <span class="profile-info">{{ user?.orgnazation }}</span>
+</div>
 
 <div class="info-line profile-chips">
   <span class="profile-field">角色: </span>
   <mat-chip-list>
-    <mat-chip color="accent" selected>管理员</mat-chip>
+    <mat-chip color="accent" selected>{{ user?.role?.description }}</mat-chip>
   </mat-chip-list>
 </div>
 

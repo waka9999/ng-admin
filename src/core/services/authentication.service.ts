@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Message } from '@core/models/message';
 import { BLANK_USER, User, USERS_DATA } from '@core/models/users';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { exhaustMap, take, tap } from 'rxjs/operators';
+import {  take, tap } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';

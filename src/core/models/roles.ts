@@ -32,7 +32,7 @@ export const roleUser = {
   id: 2,
   name: 'User',
   description: '用户',
-  permissions: [PERMISSIONS.Logs],
+  permissions: [PERMISSIONS.Dashboard, PERMISSIONS.Logs],
   readonly: false,
   inputDate: Date.now().toString(),
   updateDate: Date.now().toString(),

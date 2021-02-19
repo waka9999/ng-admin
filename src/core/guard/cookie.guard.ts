@@ -6,37 +6,43 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
-import { AuthService } from '@core/services/auth.service';
+import { AuthenticationService } from '@core/services/authentication.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CookieGuard implements CanActivate {
-  constructor(
-    private auth: AuthService,
-    private router: Router
-  ) {}
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // 已经认证
-    if (this.auth.isLogin()) {
-      this.router.navigate(['/admin']);
+    const url = this.auth.redirect ? this.auth.redirect : '/dashboard';
+
+    if (this.auth.hasLogin()) {
+      if (route.data.skipAuth) {
+        return true;
+      }
+
+      this.router.navigate([url]);
       return false;
     }
 
-    if (!this.auth.decryptCookie()) {
-      return true;
+    if (this.auth.decryptCookie()) {
+      if (route.data.skipAuth) {
+        return true;
+      }
+
+      this.router.navigate([url]);
+      return false;
     }
 
-    this.router.navigate(['/admin']);
-    return false;
+    return true;
   }
 }

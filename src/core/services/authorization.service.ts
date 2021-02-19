@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { exhaustMap } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorizedService {
-  constructor(private auth: AuthService) {}
+export class AuthorizationService {
+  constructor(private auth: AuthenticationService) {}
 
-  hasPermission$(tag: string | undefined): Observable<boolean> {
+  hasPermission$(permission: string | undefined): Observable<boolean> {
     return this.auth.current$().pipe(
       exhaustMap((user) => {
         const role = user.role;
@@ -24,7 +24,7 @@ export class AuthorizedService {
 
         if (
           permissions.find((p) => {
-            return p === tag;
+            return p === permission;
           })
         ) {
           return of(true);

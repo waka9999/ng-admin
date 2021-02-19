@@ -3,15 +3,16 @@ import { Router } from '@angular/router';
 import { Message } from '@core/models/message';
 import { BLANK_USER, User, USERS_DATA } from '@core/models/users';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { exhaustMap, take, tap } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';
+import { Role } from '@core/models/roles';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthenticationService {
   private user$: BehaviorSubject<User> = new BehaviorSubject(BLANK_USER);
 
   private readonly key = '12345678234567891234567823456789';
@@ -59,13 +60,21 @@ export class AuthService {
     return this.user!;
   }
 
+  userRole(): Role {
+    return this.user!.role!;
+  }
+
+  userPermissions(): string[] {
+    return this.user!.role!.permissions;
+  }
+
   logout(): void {
     this.clear();
     location.replace('/auth');
     console.log(this.user?.name + '已注销。');
   }
 
-  isLogin(): boolean {
+  hasLogin(): boolean {
     return !!this.user;
   }
 
@@ -78,7 +87,7 @@ export class AuthService {
   }
 
   private generateUrl(): string {
-    return this.url ? this.router.parseUrl(this.url).toString() : '/admin';
+    return this.url ? this.router.parseUrl(this.url).toString() : '/dashboard';
   }
 
   set redirect(url: string | undefined) {
@@ -120,6 +129,7 @@ export class AuthService {
     }
 
     this.user = user;
+
     this.user$.next(this.user!);
 
     return true;

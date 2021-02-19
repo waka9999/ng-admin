@@ -12,7 +12,11 @@
     *ngIf="mobile.isHandset"
   >
   </ng-header-navbar>
-  <ng-header-menu class="header-end" [username]="username" *ngIf="hasLogin()">
+  <ng-header-menu
+    class="header-end"
+    [username]="username"
+    *ngIf="username"
+  >
     <button mat-menu-item title="账号" (click)="account()">账号</button>
     <mat-divider></mat-divider>
     <button mat-menu-item title="注销" (click)="logout()">注销</button>
@@ -22,7 +26,7 @@
     class="header-end"
     [routerLink]="'/auth'"
     [title]="'登录'"
-    *ngIf="!hasLogin()"
+    *ngIf="!username"
     >登录</a
   >
 </ng-header>

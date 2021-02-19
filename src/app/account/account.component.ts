@@ -20,7 +20,6 @@ import { distinctUntilChanged, take } from 'rxjs/operators';
   host: { class: 'app-account simple-page' },
 })
 export class AccountComponent extends InjectBase implements OnInit {
-  mobile!: Mobile;
   active: 'profile' | 'password' = 'profile';
 
   constructor(injector: Injector, private router: Router) {
@@ -28,10 +27,6 @@ export class AccountComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.layoutService
-      .subject$()
-      .pipe(distinctUntilChanged())
-      .subscribe((mobile) => (this.mobile = mobile));
     this.initHeading(ACCOUNT_HEADING);
     this.initTabsRoute();
   }

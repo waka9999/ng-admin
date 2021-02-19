@@ -2,6 +2,9 @@
 
 @mixin ng-header-navbar-base {
   flex: 1 0 auto;
+  .mat-button {
+    flex: 1 0 auto;
+  }
 }
 
 @mixin ng-handset-layout-header-navbar {

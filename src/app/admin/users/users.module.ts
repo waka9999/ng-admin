@@ -13,7 +13,10 @@ import {
 } from '@angular/material/paginator';
 import { NgPaginatorService } from '@core/services/paginator.service';
 import { BlankModule } from 'projects/templates/src/lib/blank';
-import { TextStatisticModule } from 'projects/templates/src/public-api';
+import {
+  AuthorizedModule,
+  TextStatisticModule,
+} from 'projects/templates/src/public-api';
 
 @NgModule({
   declarations: [UsersComponent, CreateComponent],
@@ -26,6 +29,7 @@ import { TextStatisticModule } from 'projects/templates/src/public-api';
     MatPaginatorModule,
     BlankModule,
     TextStatisticModule,
+    AuthorizedModule,
   ],
   providers: [
     {

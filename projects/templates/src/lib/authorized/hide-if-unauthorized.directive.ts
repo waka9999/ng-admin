@@ -1,20 +1,20 @@
+import { AfterViewInit } from '@angular/core';
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { AuthorizationService } from './authorization.service';
+import { AuthorizedService } from './authorized.service';
 
 @Directive({
   selector: '[ngHideIfUnauthorized]',
 })
-export class HideIfUnauthorizedDirective {
-  @Input('ngHideIfUnauthorized') public permission!: string | undefined;
+export class HideIfUnauthorizedDirective implements AfterViewInit {
+  @Input('ngHideIfUnauthorized') permission!: string | undefined;
 
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private authorized: AuthorizationService
+    private authorized: AuthorizedService
   ) {}
-
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.authorized
       .hasPermission$(this.permission)
       .pipe(take(2))

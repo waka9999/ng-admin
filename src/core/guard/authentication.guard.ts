@@ -7,14 +7,14 @@ import {
   CanActivateChild,
   Router,
 } from '@angular/router';
-import { AuthService } from '@core/services/auth.service';
+import { AuthenticationService } from '@core/services/authentication.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private auth: AuthService, private router: Router) {}
+export class AuthenticationGuard implements CanActivate, CanActivateChild {
+  constructor(private auth: AuthenticationService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | UrlTree {
     this.auth.redirect = state.url;
 
-    if (this.auth.isLogin()) {
+    if (this.auth.hasLogin()) {
       return true;
     }
 

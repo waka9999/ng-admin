@@ -1,27 +1,31 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '@core/guard/auth.guard';
+import { AuthenticationGuard } from '@core/guard/authentication.guard';
 import { CookieGuard } from '@core/guard/cookie.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/admin',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
   },
   {
     path: 'about',
+    canActivate: [CookieGuard],
     loadChildren: () =>
       import('./about/about.module').then((mod) => mod.AboutModule),
+    data: { skipAuth: true },
   },
   {
     path: 'account',
+    canActivate: [AuthenticationGuard],
     loadChildren: () =>
       import('./account/account.module').then((mod) => mod.AccountModule),
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
+    canActivate: [AuthenticationGuard],
+    canActivateChild: [AuthenticationGuard],
     loadChildren: () =>
       import('./admin/admin.module').then((mod) => mod.AdminModule),
   },
@@ -32,16 +36,26 @@ const routes: Routes = [
       import('./auth/auth.module').then((mod) => mod.AuthModule),
   },
   {
+    path: 'dashboard',
+    canActivate: [AuthenticationGuard],
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((mod) => mod.DashboardModule),
+  },
+  {
     path: 'unauthorized',
+    canActivate: [CookieGuard],
     loadChildren: () =>
       import('./unauthorized/unauthorized.module').then(
         (mod) => mod.UnauthorizedModule
       ),
+    data: { skipAuth: true },
   },
   {
     path: '**',
+    canActivate: [CookieGuard],
     loadChildren: () =>
       import('./not-found/not-found.module').then((mod) => mod.NotFoundModule),
+    data: { skipAuth: true },
   },
 ];
 

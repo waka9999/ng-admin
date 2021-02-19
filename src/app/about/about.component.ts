@@ -25,10 +25,6 @@ export class AboutComponent extends InjectBase implements OnInit {
   }
 
   ngOnInit(): void {
-    this.layoutService
-      .subject$()
-      .pipe(distinctUntilChanged())
-      .subscribe((mobile) => (this.mobile = mobile));
     this.initHeading(ABOUT_HEADING);
     this.initConfig();
   }

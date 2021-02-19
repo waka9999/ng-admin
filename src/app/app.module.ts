@@ -8,7 +8,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { RouterModule } from '@angular/router';
 import { HeaderModule } from 'projects/templates/src/lib/header';
 import {
-  AuthorizationService,
+  AuthorizedService,
   DialogModule,
   ProgressBarModule,
 } from 'projects/templates/src/public-api';
@@ -17,7 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { CookieService } from 'ngx-cookie-service';
 import { MatButtonModule } from '@angular/material/button';
-import { AuthorizedService } from '@core/services/authorized.service';
+import { AuthorizationService } from '@core/services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { AuthorizedService } from '@core/services/authorized.service';
   ],
   providers: [
     CookieService,
-    { provide: AuthorizationService, useClass: AuthorizedService },
+    { provide: AuthorizedService, useClass: AuthorizationService },
   ],
   bootstrap: [AppComponent],
 })

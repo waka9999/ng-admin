@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorizationService {
+export class AuthorizedService {
   constructor() {}
 
   hasPermission$(tag: string | undefined): Observable<boolean> {

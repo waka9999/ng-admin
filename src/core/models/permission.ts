@@ -43,10 +43,11 @@ export const PERMISSIONS_DATA: Permission[] = [
 ];
 
 export const PERMISSIONS = {
-  Writeable: 'writeable',
+  Writable: 'writable',
   Admin: 'admin',
   Dashboard: 'dashboard',
   Users: 'users',
   Roles: 'roles',
   Groups: 'groups',
+  Logs: 'logs',
 };

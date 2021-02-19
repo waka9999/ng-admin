@@ -25,14 +25,13 @@ import {
 } from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '@core/services/auth.service';
-import { User } from '@core/models/users';
+import { AuthenticationService } from '@core/services/authentication.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent extends InjectBase implements OnInit {
   headerItems = HEADER_NAVBAR_ITEMS;
@@ -50,7 +49,7 @@ export class AppComponent extends InjectBase implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private dialog: MatDialog,
-    private auth: AuthService
+    private auth: AuthenticationService
   ) {
     super(injector);
   }
@@ -146,10 +145,6 @@ export class AppComponent extends InjectBase implements OnInit {
         }
         this.changeDetectorRef.markForCheck();
       });
-  }
-
-  hasLogin(): boolean {
-    return this.auth.isLogin();
   }
 
   account(): void {

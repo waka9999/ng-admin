@@ -1,7 +1,7 @@
 import { Injector } from '@angular/core';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
-import { AuthService } from '@core/services/auth.service';
+import { AuthenticationService } from '@core/services/authentication.service';
 import { FormBase } from '@core/shared/form.base';
 import { take, finalize } from 'rxjs/operators';
 
@@ -19,7 +19,7 @@ export class AuthComponent extends FormBase implements OnInit {
   constructor(
     injector: Injector,
     private formBuilder: FormBuilder,
-    private auth: AuthService
+    private auth: AuthenticationService
   ) {
     super(injector);
     this.formGroup = this.formBuilder.group({
@@ -35,15 +35,15 @@ export class AuthComponent extends FormBase implements OnInit {
   submit(): void {
     this.formGroup.disable();
     this.auth
-    .login$(this.formGroup.value)
-    .pipe(
-      take(1),
-      finalize(() => {
-        setTimeout(() => {
-          this.formGroup.enable();
-        }, 500);
-      })
-    )
-    .subscribe();
+      .login$(this.formGroup.value)
+      .pipe(
+        take(1),
+        finalize(() => {
+          setTimeout(() => {
+            this.formGroup.enable();
+          }, 500);
+        })
+      )
+      .subscribe();
   }
 }

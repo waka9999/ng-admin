@@ -2,8 +2,8 @@ import { Heading } from 'projects/templates/src/public-api';
 
 export const DASHBOARD_HEADING: Heading = {
   text: '仪表盘',
-  level: 0,
-  icon: 'menu',
+  level: -1,
+  icon: 'assessment',
 };
 
 export const USERS_HEADING: Heading = {

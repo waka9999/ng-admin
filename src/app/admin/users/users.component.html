@@ -15,8 +15,9 @@
   <div class="app-page-actions">
     <div class="actions-start">
       <button
-        class="action"
         mat-stroked-button
+        [ngDisableIfUnauthorized]="'writable'"
+        class="action"
         color="primary"
         (click)="create()"
       >

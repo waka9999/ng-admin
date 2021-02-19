@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import {
-  AuthorizedModule,
   HeadingModule,
 } from 'projects/templates/src/public-api';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -29,7 +28,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    AuthorizedModule,
   ],
 })
 export class AccountModule {}

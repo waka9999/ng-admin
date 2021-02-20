@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { Message } from '@core/models/message';
 import { BLANK_USER, User, USERS_DATA } from '@core/models/users';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import {  take, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';
 import { Role } from '@core/models/roles';
+import { NotifyService } from 'projects/templates/src/public-api';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,11 @@ export class AuthenticationService {
   private user!: User | undefined;
   private url!: string | undefined;
 
-  constructor(private cookie: CookieService, private router: Router) {}
+  constructor(
+    private cookie: CookieService,
+    private router: Router,
+    private notify: NotifyService
+  ) {}
 
   login$(cred: any): Observable<HttpResponse<Message>> {
     this.user = USERS_DATA.find(
@@ -46,10 +51,10 @@ export class AuthenticationService {
 
     return of(
       new HttpResponse<Message>({
-        body: { code: 1, error: 'user not found' },
+        body: { code: 1, error: '认证失败，用户名或密码不正确' },
         status: 200,
       })
-    );
+    ).pipe(tap(() => this.notify.warn('认证失败,用户名或密码不正确')));
   }
 
   current$(): BehaviorSubject<User> {

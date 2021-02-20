@@ -21,15 +21,6 @@ $ng-sidenav-content-open-height: 100vh !default;
   }
 }
 
-:host-context(.ng-web),
-:host-context(.ng-tablet) {
-  margin-top: 64px;
-}
-
-:host-context(.ng-handset) {
-  margin-top: 92px;
-}
-
 :host {
   position: relative;
   display: block;

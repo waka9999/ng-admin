@@ -1,4 +1,5 @@
 <ng-progress-bar #progressbar></ng-progress-bar>
+<ng-template #notify></ng-template>
 <ng-header>
   <ng-header-brand [brand]="brand" class="header-brand"></ng-header-brand>
   <ng-header-navbar
@@ -12,11 +13,7 @@
     *ngIf="mobile.isHandset"
   >
   </ng-header-navbar>
-  <ng-header-menu
-    class="header-end"
-    [username]="username"
-    *ngIf="username"
-  >
+  <ng-header-menu class="header-end" [username]="username" *ngIf="username">
     <button mat-menu-item title="账号" (click)="account()">账号</button>
     <mat-divider></mat-divider>
     <button mat-menu-item title="注销" (click)="logout()">注销</button>

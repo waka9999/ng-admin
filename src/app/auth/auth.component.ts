@@ -10,9 +10,11 @@ import { take, finalize } from 'rxjs/operators';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'app-auth simple-page' },
+  host: { class: 'app-auth' },
 })
 export class AuthComponent extends FormBase implements OnInit {
+  message!: string;
+
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
@@ -44,6 +46,12 @@ export class AuthComponent extends FormBase implements OnInit {
           }, 500);
         })
       )
-      .subscribe();
+      .subscribe((resp) => {
+        if (resp.status === 200) {
+          if (resp!.body!.code !== 0) {
+            this.message = resp!.body!.error!;
+          }
+        }
+      });
   }
 }

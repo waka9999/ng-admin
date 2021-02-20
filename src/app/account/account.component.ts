@@ -6,10 +6,8 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ACCOUNT_HEADING } from '@core/models/heading';
-import { Mobile } from '@core/models/layout';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
-import { distinctUntilChanged, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account',

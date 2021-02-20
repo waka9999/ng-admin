@@ -10,6 +10,7 @@ import { HeaderModule } from 'projects/templates/src/lib/header';
 import {
   AuthorizedService,
   DialogModule,
+  NotifyModule,
   ProgressBarModule,
 } from 'projects/templates/src/public-api';
 import { AppConfigModule } from './app.config.module';
@@ -20,9 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthorizationService } from '@core/services/authorization.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,6 +29,7 @@ import { AuthorizationService } from '@core/services/authorization.service';
     AppConfigModule.forRoot(),
     ProgressBarModule,
     HeaderModule,
+    NotifyModule,
     RouterModule,
     DialogModule,
     MatDividerModule,

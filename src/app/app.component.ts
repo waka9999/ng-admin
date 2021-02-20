@@ -7,6 +7,7 @@ import {
   OnInit,
   Renderer2,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
@@ -21,6 +22,7 @@ import { BRAND, HEADER_NAVBAR_ITEMS } from '@core/models/header';
 import { InjectBase } from '@core/shared/inject.base';
 import {
   DialogComponent,
+  NotifyService,
   ProgressBarComponent,
 } from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
@@ -31,6 +33,7 @@ import { AuthenticationService } from '@core/services/authentication.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent extends InjectBase implements OnInit {
   headerItems = HEADER_NAVBAR_ITEMS;
@@ -41,6 +44,9 @@ export class AppComponent extends InjectBase implements OnInit {
   @ViewChild('progressbar', { static: true })
   progressbar!: ProgressBarComponent;
 
+  @ViewChild('notify', { static: true, read: ViewContainerRef })
+  notifyContainer!: ViewContainerRef;
+
   constructor(
     injector: Injector,
     private title: Title,
@@ -48,7 +54,8 @@ export class AppComponent extends InjectBase implements OnInit {
     private renderer: Renderer2,
     private router: Router,
     private dialog: MatDialog,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    private notify: NotifyService
   ) {
     super(injector);
   }
@@ -70,6 +77,7 @@ export class AppComponent extends InjectBase implements OnInit {
       this.updateLayoutForMediaChange.bind(this)
     );
     this.initHeader();
+    this.initNotify();
   }
 
   private initConfig(): void {
@@ -144,6 +152,10 @@ export class AppComponent extends InjectBase implements OnInit {
         }
         this.changeDetectorRef.markForCheck();
       });
+  }
+
+  private initNotify(): void {
+    this.notify.initFactory(this.notifyContainer);
   }
 
   account(): void {

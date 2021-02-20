@@ -1,0 +1,49 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-notify-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $warn: mat-color($color, warn);
+  $foreground: mat-color($color, foreground);
+
+  .ng-notify {
+    &.app-notify {
+      color: white;
+      &.notify-info {
+        background-color: mat-color(mat-palette($mat-blue));
+      }
+
+      &.notify-success {
+        background: mat-color(mat-palette($mat-green), 500);
+      }
+
+      &.notify-warn {
+        background: mat-color($warn, 900);
+      }
+    }
+
+    &.comp-notify {
+      &.notify-info {
+        border: 1px solid mat-color(mat-palette($mat-blue));
+        background: mat-color(mat-palette($mat-blue, 100));
+        span {
+          color: mat-color(mat-palette($mat-blue));
+        }
+      }
+      &.notify-success {
+        border: 1px solid mat-color(mat-palette($mat-green), 500);
+        background: mat-color(mat-palette($mat-green), 100);
+        span {
+          color: mat-color(mat-palette($mat-green), 500);
+        }
+      }
+      &.notify-warn {
+        border: 1px solid mat-color($warn, 900);
+        background: mat-color($warn, 100);
+        span {
+          color: mat-color($warn, 900);
+        }
+      }
+    }
+  }
+}

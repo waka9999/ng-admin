@@ -1,0 +1,53 @@
+@import "../style/flex";
+
+// @mixin ng-notify-base {
+//   position: relative;
+//   width: 100%;
+//   padding: 0.5rem;
+//   margin-top: -40px;
+//   transition: margin-top 280ms ease-out;
+
+//   &.notify-visible {
+//     margin-top: 0;
+//   }
+// }
+
+@mixin ng-notify-base {
+  @include ng-flex-row-start-center;
+  position: relative;
+  width: 100%;
+  padding: 0.5rem;
+  transition: margin-top 280ms ease-out;
+  margin-top: -40px;
+  overflow: hidden;
+
+  &.app-notify {
+    &.notify-visible {
+      margin-top: 0;
+    }
+  }
+  &.comp-notify {
+    display: none;
+    margin-top: 0;
+    &.notify-visible {
+      display: flex;
+    }
+  }
+}
+
+@mixin ng-notify-message {
+  font-size: 0.875rem;
+  flex: 1 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 0.5rem;
+}
+
+@mixin ng-notify-close {
+  font-size: 1rem;
+  line-height: 1rem;
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}

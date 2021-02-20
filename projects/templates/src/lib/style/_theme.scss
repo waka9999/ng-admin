@@ -3,7 +3,7 @@
 @import "../nav-list/nav-list-theme";
 @import "../error/error-theme";
 @import "../blank/blank-theme";
-
+@import "../notify/notify-theme";
 @import "./divider";
 
 .hidden {
@@ -15,4 +15,7 @@
   cursor: default !important;
   color: rgba(0, 0, 0, 0.26) !important;
   background-color: rgba(0, 0, 0, 0.12) !important;
+}
+.opacity {
+  opacity: 0.6;
 }

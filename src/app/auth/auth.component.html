@@ -26,6 +26,7 @@
     />
     <mat-error *ngIf="password.hasError('required')"> 密码必须输入 </mat-error>
   </mat-form-field>
+  <mat-error class="form-error">{{ message }}</mat-error>
   <div class="form-actions">
     <button
       type="submit"

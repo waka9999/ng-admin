@@ -1,9 +1,10 @@
 @import "/projects/templates/src/lib/style/flex";
 
 :host {
-
   @include ng-flex-column-center-center;
-  height: calc(100vh - 92px);
+  width: 272px;
+  height: 720px;
+  margin: 0 auto;
   h2 {
     margin-bottom: 1.5rem;
   }
@@ -11,12 +12,16 @@
   .login-form {
     @include ng-flex-column-start-stretch;
 
-    .form-actions{
-      button{
-        width:100%;
+    .form-actions {
+      button {
+        width: 100%;
       }
     }
+    .form-error {
+      text-align: center;
+    }
+  }
+  .ng-notify.notify-visible + .login-form {
+    margin-top: 1rem;
   }
 }
-
-

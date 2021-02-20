@@ -1,0 +1,12 @@
+@import "./notify-base";
+.ng-notify {
+  @include ng-notify-base;
+
+  .notify-close {
+    @include ng-notify-close;
+  }
+
+  .notify-message {
+    @include ng-notify-message;
+  }
+}

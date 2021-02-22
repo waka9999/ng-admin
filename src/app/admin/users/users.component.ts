@@ -7,12 +7,16 @@ import {
 } from '@angular/core';
 import { USERS_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
-import { User, USERS_DATA } from '@core/models/users';
-import { Router } from '@angular/router';
-import { customAnimation } from 'projects/templates/src/public-api';
+import { User } from '@core/models/users';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  customAnimation,
+  Notification,
+} from 'projects/templates/src/public-api';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { takeUntil } from 'rxjs/operators';
+import { USERS_INFO } from '@core/models/notification';
 
 @Component({
   selector: 'app-admin-users',
@@ -22,18 +26,23 @@ import { takeUntil } from 'rxjs/operators';
   animations: [customAnimation],
 })
 export class UsersComponent extends InjectBase implements OnInit {
+  notification!: Notification;
   displayedColumns: string[] = ['id', 'name', 'state'];
-  dataSource = new MatTableDataSource<User>(USERS_DATA);
+  dataSource!: MatTableDataSource<User>;
   pageSize!: number;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(injector: Injector, private router: Router) {
+  constructor(
+    injector: Injector,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
     super(injector);
   }
 
   ngOnInit(): void {
+    this.initUsers();
     this.initHeading(USERS_HEADING);
-    this.initTable();
   }
 
   private initTable(): void {
@@ -42,6 +51,14 @@ export class UsersComponent extends InjectBase implements OnInit {
       .subject$()
       .pipe(takeUntil(this.destroy$))
       .subscribe((c) => (this.pageSize = c.pageSize));
+  }
+
+  private initUsers(): void {
+    this.route.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+      this.dataSource = new MatTableDataSource<User>(data.users);
+      this.initTable();
+      this.notification = USERS_INFO;
+    });
   }
 
   create(): void {

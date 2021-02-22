@@ -2,11 +2,23 @@
 .ng-notify {
   @include ng-notify-base;
 
-  .notify-close {
-    @include ng-notify-close;
+  &.app-notify {
+    &.notify-visible {
+      @include ng-notify-app-notify-visible;
+    }
+  }
+  &.comp-notify {
+    @include ng-notify-comp-notify;
+    &.notify-visible {
+      @include ng-notify-comp-notify-visible;
+    }
   }
 
   .notify-message {
     @include ng-notify-message;
+  }
+
+  .notify-close {
+    @include ng-notify-close;
   }
 }

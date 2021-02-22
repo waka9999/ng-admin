@@ -8,7 +8,8 @@ import { HttpResponse } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import * as CryptoJS from 'crypto-js';
 import { Role } from '@core/models/roles';
-import { NotifyService } from 'projects/templates/src/public-api';
+import { NotifyService } from 'projects/templates/src/lib/notify';
+import { CONNECTION_ERROR, CONNECTION_INFO } from '@core/models/notification';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,6 @@ export class AuthenticationService {
 
     if (!!this.user) {
       this.encryptCookie();
-
       return of(
         new HttpResponse<Message>({
           body: { code: 0, data: JSON.stringify(this.user) },
@@ -45,6 +45,8 @@ export class AuthenticationService {
         tap(() => {
           this.user$.next(this.user!);
           this.router.navigateByUrl(this.generateUrl());
+          console.log(CONNECTION_INFO);
+          this.notify.show(CONNECTION_INFO);
         })
       );
     }
@@ -54,7 +56,12 @@ export class AuthenticationService {
         body: { code: 1, error: '认证失败，用户名或密码不正确' },
         status: 200,
       })
-    ).pipe(tap(() => this.notify.warn('认证失败,用户名或密码不正确')));
+    ).pipe(
+      tap(() => {
+        console.log(CONNECTION_ERROR);
+        this.notify.show(CONNECTION_ERROR);
+      })
+    );
   }
 
   current$(): BehaviorSubject<User> {

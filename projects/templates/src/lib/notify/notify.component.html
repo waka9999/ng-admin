@@ -1,3 +1,15 @@
-<span class="material-icons check">{{ notification?.icon }}</span>
+<ng-container [ngSwitch]="notification?.type">
+  <span class="material-icons check" *ngSwitchCase="type.Info">info</span>
+  <span class="material-icons check" *ngSwitchCase="type.Success"
+    >check_circle</span
+  >
+  <span class="material-icons check" *ngSwitchCase="type.Warn">warning</span>
+  <span class="material-icons check" *ngSwitchCase="type.Error">error</span>
+</ng-container>
 <div class="notify-message">{{ notification?.message }}</div>
-<span class="material-icons notify-close" (click)="close()">close</span>
+<span
+  class="material-icons notify-close"
+  *ngIf="notification?.type !== type.Error"
+  (click)="close()"
+  >close</span
+>

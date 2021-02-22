@@ -1,6 +1,7 @@
 @import "/projects/templates/src/lib/style/flex";
 
 :host {
+  position: relative;
   @include ng-flex-column-center-center;
   width: 272px;
   height: 720px;

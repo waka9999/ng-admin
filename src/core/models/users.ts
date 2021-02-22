@@ -1,6 +1,11 @@
 import { Group } from './groups';
 import { Role, roleAdmin, roleReadonly, roleUser } from './roles';
 
+export interface UserResult {
+  user: User;
+  result: string;
+}
+
 export interface User {
   id: number;
   name: string;

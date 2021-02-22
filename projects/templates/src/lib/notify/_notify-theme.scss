@@ -3,6 +3,7 @@
 @mixin ng-notify-theme($theme) {
   $color: mat-get-color-config($theme);
   $primary: mat-color($color, primary);
+  $accent: mat-color($color, accent);
   $warn: mat-color($color, warn);
   $foreground: mat-color($color, foreground);
 
@@ -18,32 +19,44 @@
       }
 
       &.notify-warn {
+        background: mat-color($accent, 900);
+      }
+      &.notify-error {
         background: mat-color($warn, 900);
       }
     }
-
     &.comp-notify {
       &.notify-info {
         border: 1px solid mat-color(mat-palette($mat-blue));
-        background: mat-color(mat-palette($mat-blue, 100));
+        background: mat-color(mat-palette($mat-blue, 50));
         span {
           color: mat-color(mat-palette($mat-blue));
         }
       }
       &.notify-success {
         border: 1px solid mat-color(mat-palette($mat-green), 500);
-        background: mat-color(mat-palette($mat-green), 100);
+        background: mat-color(mat-palette($mat-green), 50);
         span {
           color: mat-color(mat-palette($mat-green), 500);
         }
       }
       &.notify-warn {
+        border: 1px solid mat-color($accent, 900);
+        background: mat-color($accent, 50);
+        span {
+          color: mat-color($accent, 900);
+        }
+      }
+      &.notify-error {
         border: 1px solid mat-color($warn, 900);
-        background: mat-color($warn, 100);
+        background: mat-color($warn, 50);
         span {
           color: mat-color($warn, 900);
         }
       }
     }
+  }
+  .notify-link {
+    color: inherit;
   }
 }

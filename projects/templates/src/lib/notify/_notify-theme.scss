@@ -10,8 +10,13 @@
   .ng-notify {
     &.app-notify {
       color: white;
+
+      &.notify-primary {
+        background: mat-color($primary);
+      }
+
       &.notify-info {
-        background-color: mat-color(mat-palette($mat-blue));
+        background: mat-color(mat-palette($mat-blue));
       }
 
       &.notify-success {

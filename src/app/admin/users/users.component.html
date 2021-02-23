@@ -4,13 +4,13 @@
     params: { opacity: '0.6' }
   }"
 >
-<ng-notify #notify></ng-notify>
+  <ng-notify #notify></ng-notify>
   <div class="app-page-statistics">
     <ng-text-statistic [title]="'管理员'">
-      <a href="#">1</a>
+      <a [routerLink]="adminUserFilter()">{{ adminUsers() }}</a>
     </ng-text-statistic>
-    <ng-text-statistic [title]="'只读'">
-      <a href="#">1</a>
+    <ng-text-statistic [title]="'启用'">
+      <a [routerLink]="enableUserFilter()">{{ enableUsers() }}</a>
     </ng-text-statistic>
   </div>
   <div class="app-page-actions">
@@ -29,26 +29,84 @@
     <div class="actions-end">
       <ng-filter class="action" (filter)="filter($event)"></ng-filter>
       <span class="ng-divider"></span>
-      <button class="action" mat-icon-button color="primary">
+      <button
+        class="action"
+        mat-icon-button
+        color="primary"
+        (click)="refresh()"
+      >
         <span class="material-icons">refresh</span>
       </button>
     </div>
   </div>
   <div class="page-table">
     <mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row?.id }} </mat-cell>
-      </ng-container>
-
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> 姓名 </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{ row?.name }} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="username">
+        <mat-header-cell *matHeaderCellDef> 用户名 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.username }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> 邮箱 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.email }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          部门
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.department }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="organization">
+        <mat-header-cell *matHeaderCellDef> 组织 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.organization }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef> 角色 </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container [ngSwitch]="row?.role?.name">
+            <span class="ng-chip chip-error" *ngSwitchCase="'admin'">
+              {{ row?.role?.description }}
+            </span>
+            <span class="ng-chip chip-success" *ngSwitchCase="'readonly'">
+              {{ row?.role?.description }}
+            </span>
+            <span class="ng-chip chip-info" *ngSwitchDefault>
+              {{ row?.role?.description }}
+            </span>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="state">
         <mat-header-cell *matHeaderCellDef> 状态 </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row?.state }} </mat-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="material-icons ng-primary" *ngIf="row?.state === 1">
+            check_box
+          </span>
+          <span class="material-icons ng-default" *ngIf="row?.state !== 1">
+            check_box_outline_blank
+          </span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="inputDate">
+        <mat-header-cell *matHeaderCellDef> 输入日期 </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row?.inputDate | date }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="updateDate">
+        <mat-header-cell *matHeaderCellDef> 更新日期 </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row?.updateDate | date }}
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>

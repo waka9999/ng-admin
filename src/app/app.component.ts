@@ -65,12 +65,12 @@ export class AppComponent extends InjectBase implements OnInit {
     this.initProgressbar();
     this.initLayout(Breakpoints.Web, this.updateLayoutForWebChange.bind(this));
     this.initLayout(
-      Breakpoints.Handset,
-      this.updateLayoutForHandSetChange.bind(this)
-    );
-    this.initLayout(
       Breakpoints.Tablet,
       this.updateLayoutForTabletChange.bind(this)
+    );
+    this.initLayout(
+      Breakpoints.Handset,
+      this.updateLayoutForHandSetChange.bind(this)
     );
     this.mediaQuery(
       '(max-width: 960px)',

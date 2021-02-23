@@ -13,9 +13,9 @@ export interface User {
   password?: string;
   email: string;
   department: string;
-  orgnazation: string;
-  state: number;
+  organization: string;
   role?: Role;
+  state: number;
   groups?: Group[];
   inputDate?: string;
   updateDate?: string;
@@ -27,7 +27,7 @@ export const BLANK_USER: User = {
   username: '',
   email: '',
   department: '',
-  orgnazation: '',
+  organization: '',
   state: -1,
 };
 
@@ -39,35 +39,35 @@ export const USERS_DATA: User[] = [
     password: '123456',
     email: 'foo@bar.com',
     department: '部门',
-    orgnazation: '组织',
-    state: 1,
+    organization: '组织',
     role: roleAdmin,
+    state: 1,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },
   {
     id: 2,
-    name: '用户',
-    username: 'user',
-    password: '123456',
-    email: 'foo@bar.com',
-    department: '部门',
-    orgnazation: '组织',
-    state: 1,
-    role: roleUser,
-    inputDate: Date.now().toString(),
-    updateDate: Date.now().toString(),
-  },
-  {
-    id: 3,
     name: '只读',
     username: 'readonly',
     password: '123456',
     email: 'foo@bar.com',
     department: '部门',
-    orgnazation: '组织',
-    state: 1,
+    organization: '组织',
     role: roleReadonly,
+    state: 1,
+    inputDate: Date.now().toString(),
+    updateDate: Date.now().toString(),
+  },
+  {
+    id: 3,
+    name: '用户',
+    username: 'user',
+    password: '123456',
+    email: 'foo@bar.com',
+    department: '部门',
+    organization: '组织',
+    role: roleUser,
+    state: 0,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },

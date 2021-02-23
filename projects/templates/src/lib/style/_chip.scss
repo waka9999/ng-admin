@@ -1,0 +1,50 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-chip-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $accent: mat-color($color, accent);
+  $warn: mat-color($color, warn);
+  $foreground: mat-color($color, foreground);
+
+  .ng-chip {
+    display: inline-block;
+    padding: 2px 4px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 4px;
+    color: white;
+
+    &.chip-circle {
+      padding: 6px;
+      border-radius: 50%;
+    }
+
+    &.chip-gray {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    &.chip-info {
+      background: mat-color(mat-palette($mat-blue));
+    }
+
+    &.chip-success {
+      background: mat-color(mat-palette($mat-green), 500);
+    }
+
+    &.chip-accent {
+      background: mat-color($accent, 900);
+    }
+
+    &.chip-error {
+      background: mat-color($warn, 900);
+    }
+  }
+  .ng-chip + .ng-chip {
+    margin-left: 8px;
+  }
+}

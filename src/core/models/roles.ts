@@ -12,7 +12,7 @@ export interface Role {
 
 export const roleAdmin = {
   id: 1,
-  name: 'Admin',
+  name: 'admin',
   description: '管理员',
   permissions: [
     PERMISSIONS.Writable,
@@ -28,28 +28,29 @@ export const roleAdmin = {
   updateDate: Date.now().toString(),
 };
 
-export const roleUser = {
-  id: 2,
-  name: 'User',
-  description: '用户',
-  permissions: [PERMISSIONS.Dashboard, PERMISSIONS.Logs],
-  readonly: false,
-  inputDate: Date.now().toString(),
-  updateDate: Date.now().toString(),
-};
-
 export const roleReadonly = {
-  id: 3,
-  name: 'Readonly',
+  id: 2,
+  name: 'readonly',
   description: '只读',
   permissions: [
     PERMISSIONS.Admin,
     PERMISSIONS.Dashboard,
+    PERMISSIONS.Logs,
     PERMISSIONS.Users,
     PERMISSIONS.Roles,
     PERMISSIONS.Groups,
   ],
   readonly: true,
+  inputDate: Date.now().toString(),
+  updateDate: Date.now().toString(),
+};
+
+export const roleUser = {
+  id: 3,
+  name: 'user',
+  description: '用户',
+  permissions: [PERMISSIONS.Dashboard, PERMISSIONS.Logs],
+  readonly: false,
   inputDate: Date.now().toString(),
   updateDate: Date.now().toString(),
 };

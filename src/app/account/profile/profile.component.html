@@ -15,21 +15,24 @@
 </div>
 
 <div class="info-line">
-  组织: <span class="profile-info">{{ user?.orgnazation }}</span>
+  组织: <span class="profile-info">{{ user?.organization }}</span>
 </div>
 
 <div class="info-line profile-chips">
   <span class="profile-field">角色: </span>
-  <mat-chip-list>
-    <mat-chip color="accent" selected>{{ user?.role?.description }}</mat-chip>
-  </mat-chip-list>
+  <ng-container [ngSwitch]="user?.role?.name">
+    <span class="ng-chip chip-error" *ngSwitchCase="'admin'">
+      {{ user?.role?.description }}
+    </span>
+    <span class="ng-chip chip-success" *ngSwitchCase="'readonly'">
+      {{ user?.role?.description }}
+    </span>
+    <span class="ng-chip chip-info" *ngSwitchDefault>
+      {{ user?.role?.description }}
+    </span>
+  </ng-container>
 </div>
 
 <div class="info-line profile-chips">
   <span class="profile-field">项目组: </span>
-  <mat-chip-list>
-    <mat-chip>北京 运维</mat-chip>
-    <mat-chip>北京 开发</mat-chip>
-    <mat-chip>北京 测试</mat-chip>
-  </mat-chip-list>
 </div>

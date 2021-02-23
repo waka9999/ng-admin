@@ -20,6 +20,7 @@ import {
 } from 'projects/templates/src/public-api';
 import { UsersResolver } from '@core/reslovers/users/users.resolver';
 import { UsersService } from '@core/services/users.service';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [UsersComponent, CreateComponent],
@@ -30,6 +31,7 @@ import { UsersService } from '@core/services/users.service';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
+    MatChipsModule,
     BlankModule,
     TextStatisticModule,
     AuthorizedModule,

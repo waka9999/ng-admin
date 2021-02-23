@@ -1,0 +1,58 @@
+@import "/node_modules/@angular/material/theming";
+
+@mixin ng-color-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $primary: mat-color($color, primary);
+  $accent: mat-color($color, accent);
+  $warn: mat-color($color, warn);
+  $foreground: mat-color($color, foreground);
+
+  .ng-background {
+    color: white;
+    &.ng-default {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    &.ng-primary {
+      background: mat-color($primary);
+    }
+
+    &.ng-info {
+      background: mat-color(mat-palette($mat-blue));
+    }
+
+    &.ng-success {
+      background: mat-color(mat-palette($mat-green), 500);
+    }
+
+    &.ng-warn {
+      background: mat-color($accent, 900);
+    }
+
+    &.ng-error {
+      background: mat-color($warn, 900);
+    }
+  }
+
+  .ng-default {
+    color: mat-color($foreground, text);
+  }
+  .ng-primary {
+    color: mat-color($primary);
+  }
+
+  .ng-info {
+    color: mat-color(mat-palette($mat-blue));
+  }
+
+  .ng-success {
+    color: mat-color(mat-palette($mat-green), 500);
+  }
+
+  .ng-warn {
+    color: mat-color($accent);
+  }
+
+  .ng-error {
+    color: mat-color($warn);
+  }
+}

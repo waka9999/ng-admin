@@ -26,6 +26,8 @@ $ng-light-theme: mat-light-theme(
   @include ng-blank-theme($ng-light-theme);
   @include ng-table-theme($ng-light-theme);
   @include ng-notify-theme($ng-light-theme);
+  @include ng-chip-theme($ng-light-theme);
+  @include ng-color-theme($ng-light-theme);
 }
 
 @import "../about/about-theme";

@@ -13,6 +13,13 @@ const routes: Routes = [
     },
   },
   {
+    path: ':filter',
+    component: UsersComponent,
+    resolve: {
+      users: UsersResolver,
+    },
+  },
+  {
     path: 'create',
     component: CreateComponent,
   },

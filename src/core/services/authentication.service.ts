@@ -30,7 +30,9 @@ export class AuthenticationService {
   login$(cred: any): Observable<HttpResponse<Message>> {
     this.user = USERS_DATA.find(
       (user) =>
-        user.username === cred.username && user.password === cred.password
+        user.username === cred.username &&
+        user.password === cred.password &&
+        user.state === 1
     );
 
     if (!!this.user) {

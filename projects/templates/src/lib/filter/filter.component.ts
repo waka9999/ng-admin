@@ -23,7 +23,6 @@ export class FilterComponent implements OnInit {
 
   private subject$ = new Subject<string>();
   @Output() filter = this.subject$.pipe(
-    filter((text) => text.length > 2),
     debounceTime(300),
     distinctUntilChanged()
   );

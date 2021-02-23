@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { NotifyType, Notification, NotifyLevel } from './model';
+import { NotifyType, Notification } from './model';
 
 @Component({
   selector: 'ng-notify',
@@ -16,7 +16,7 @@ import { NotifyType, Notification, NotifyLevel } from './model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     '[class.app-notify]': 'isAppLevel()',
-    '[class.comp-notify]': 'isCompLevel()',
+    '[class.comp-notify]': '!isAppLevel()',
     '[class.notify-visible]': 'isVisible()',
     '[class.notify-success]': 'isSuccess()',
     '[class.notify-info]': 'isInfo()',
@@ -27,18 +27,14 @@ import { NotifyType, Notification, NotifyLevel } from './model';
 })
 export class NotifyComponent implements OnInit {
   @Input() notification!: Notification;
-  @Input() autoClose: boolean = true;
+  appLevel: boolean = false;
   type: typeof NotifyType = NotifyType;
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {}
 
   isAppLevel(): boolean {
-    return this.notification?.level === NotifyLevel.App;
-  }
-
-  isCompLevel(): boolean {
-    return this.notification?.level === NotifyLevel.Component;
+    return this.appLevel;
   }
 
   isSuccess(): boolean {
@@ -61,7 +57,8 @@ export class NotifyComponent implements OnInit {
     return this.notification?.visible;
   }
 
-  show(): void {
+  show(notification: Notification): void {
+    this.notification = notification;
     this.notification.visible = true;
     if (this.notification?.type !== this.type.Error) {
       setTimeout(() => {

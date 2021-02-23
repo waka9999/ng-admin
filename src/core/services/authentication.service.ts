@@ -45,7 +45,6 @@ export class AuthenticationService {
         tap(() => {
           this.user$.next(this.user!);
           this.router.navigateByUrl(this.generateUrl());
-          console.log(CONNECTION_INFO);
           this.notify.show(CONNECTION_INFO);
         })
       );
@@ -58,7 +57,6 @@ export class AuthenticationService {
       })
     ).pipe(
       tap(() => {
-        console.log(CONNECTION_ERROR);
         this.notify.show(CONNECTION_ERROR);
       })
     );

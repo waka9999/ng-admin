@@ -11,7 +11,7 @@ import { User } from '@core/models/users';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   customAnimation,
-  Notification,
+  NotifyComponent,
 } from 'projects/templates/src/public-api';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -26,7 +26,9 @@ import { USERS_INFO } from '@core/models/notification';
   animations: [customAnimation],
 })
 export class UsersComponent extends InjectBase implements OnInit {
-  notification!: Notification;
+  @ViewChild('notify', { static: true, read: NotifyComponent })
+  notify!: NotifyComponent;
+
   displayedColumns: string[] = ['id', 'name', 'state'];
   dataSource!: MatTableDataSource<User>;
   pageSize!: number;
@@ -57,7 +59,7 @@ export class UsersComponent extends InjectBase implements OnInit {
     this.route.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.dataSource = new MatTableDataSource<User>(data.users);
       this.initTable();
-      this.notification = USERS_INFO;
+      this.notify.show(USERS_INFO);
     });
   }
 

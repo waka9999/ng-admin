@@ -21,10 +21,10 @@ export class NotifyService {
       NotifyComponent
     );
     this.component = container.createComponent(factory);
+    this.component.instance.appLevel = true;
   }
 
   show(notification: Notification): void {
-    this.component.instance.notification = notification;
-    this.component.instance.show();
+    this.component.instance.show(notification);
   }
 }

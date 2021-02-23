@@ -39,12 +39,12 @@ $ng-notify-message-font-size: 0.875rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin: 0 0.5rem;
+  font-size: $ng-notify-message-font-size;
 }
 
 @mixin ng-notify-message {
-  font-size: $ng-notify-message-font-size;
   flex: 1 0 auto;
-  padding: 0 0.5rem;
   @include _ng-notify-message-text;
 }
 
@@ -56,4 +56,13 @@ $ng-notify-close-size: 1rem !default;
   width: $ng-notify-close-size;
   height: $ng-notify-close-size;
   cursor: pointer;
+}
+
+@mixin ng-notify-link {
+  font-size: $ng-notify-message-font-size;
+  margin: 0 0.5rem;
+}
+
+@mixin ng-handset-layout-notify-link {
+  display: none;
 }

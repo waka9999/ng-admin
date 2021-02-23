@@ -2,6 +2,8 @@ export interface Notification {
   type: NotifyType;
   visible: boolean;
   message?: string;
+  detail?: string;
+  log?: string;
 }
 
 export enum NotifyType {

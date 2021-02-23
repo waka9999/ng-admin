@@ -40,11 +40,13 @@ export class UsersComponent extends InjectBase implements OnInit {
     private route: ActivatedRoute
   ) {
     super(injector);
+    // this.initNotification();
   }
 
   ngOnInit(): void {
     this.initUsers();
     this.initHeading(USERS_HEADING);
+    this.initNotify();
   }
 
   private initTable(): void {
@@ -59,8 +61,13 @@ export class UsersComponent extends InjectBase implements OnInit {
     this.route.data.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       this.dataSource = new MatTableDataSource<User>(data.users);
       this.initTable();
-      this.notify.show(USERS_INFO);
     });
+  }
+
+  private initNotify(): void {
+    if (history.state.notification) {
+      this.notify.show(history.state.notification);
+    }
   }
 
   create(): void {

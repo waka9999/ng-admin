@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Injector,
+  OnInit,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { USERS_CREATE_HEADING } from '@core/models/heading';
+import { USER_CREATE_SUCCESS } from '@core/models/notification';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
 
@@ -11,11 +18,16 @@ import { customAnimation } from 'projects/templates/src/public-api';
   animations: [customAnimation],
 })
 export class CreateComponent extends InjectBase implements OnInit {
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private router: Router) {
     super(injector);
   }
 
   ngOnInit(): void {
     this.initHeading(USERS_CREATE_HEADING);
+  }
+  click(): void {
+    this.router.navigate(['/admin/users'], {
+      state: { notification: USER_CREATE_SUCCESS },
+    });
   }
 }

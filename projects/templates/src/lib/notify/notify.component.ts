@@ -63,7 +63,7 @@ export class NotifyComponent implements OnInit {
     if (this.notification?.type !== this.type.Error) {
       setTimeout(() => {
         this.close();
-      }, 3000);
+      }, 30000);
     }
     this.changeDetectorRef.markForCheck();
   }

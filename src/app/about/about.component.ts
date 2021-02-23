@@ -4,7 +4,7 @@ import { ABOUT_HEADING } from '@core/models/heading';
 import { Mobile } from '@core/models/layout';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-about',

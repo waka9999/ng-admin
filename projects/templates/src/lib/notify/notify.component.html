@@ -1,12 +1,26 @@
 <ng-container [ngSwitch]="notification?.type">
-  <span class="material-icons check" *ngSwitchCase="type.Info">info</span>
-  <span class="material-icons check" *ngSwitchCase="type.Success"
-    >check_circle</span
+  <span class="material-icons" *ngSwitchCase="type.Info">info</span>
+  <span class="material-icons" *ngSwitchCase="type.Success"
+    >check_circle_outline</span
   >
-  <span class="material-icons check" *ngSwitchCase="type.Warn">warning</span>
-  <span class="material-icons check" *ngSwitchCase="type.Error">error</span>
+  <span class="material-icons" *ngSwitchCase="type.Warn">warning_amber</span>
+  <span class="material-icons" *ngSwitchCase="type.Error">error_outline</span>
 </ng-container>
-<div class="notify-message">{{ notification?.message }}</div>
+<div class="notify-message">
+  {{ notification?.message }}
+  <a
+    class="notify-link"
+    *ngIf="notification?.detail"
+    [routerLink]="notification?.detail"
+    >查看详细</a
+  >
+</div>
+<a
+  class="notify-link"
+  *ngIf="notification?.log"
+  [routerLink]="notification?.log"
+  >日志</a
+>
 <span
   class="material-icons notify-close"
   *ngIf="notification?.type !== type.Error"

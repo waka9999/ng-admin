@@ -21,4 +21,16 @@
   .notify-close {
     @include ng-notify-close;
   }
+
+  .notify-link {
+    @include ng-notify-link;
+  }
+}
+
+.ng-handset {
+  .ng-notify {
+    .notify-link {
+      @include ng-handset-layout-notify-link;
+    }
+  }
 }

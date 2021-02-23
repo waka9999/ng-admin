@@ -57,6 +57,7 @@
     }
   }
   .notify-link {
-    color: inherit;
+    color: mat-color($primary);
+    text-decoration: none;
   }
 }

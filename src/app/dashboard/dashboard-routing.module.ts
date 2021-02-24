@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     canActivate: [AuthorizationGuard],
     component: DashboardComponent,
-    data: { permission: PERMISSIONS.Dashboard },
+    data: { permission: PERMISSIONS.Dashboard.base },
   },
 ];
 

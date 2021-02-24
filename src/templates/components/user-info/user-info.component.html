@@ -1,25 +1,25 @@
 <div class="info-line">
-  姓名: <span class="profile-info">{{ user?.name }}</span>
+  姓名: <span class="user-info">{{ user?.name }}</span>
 </div>
 
 <div class="info-line">
-  用户名: <span class="profile-info">{{ user?.username }}</span>
+  用户名: <span class="user-info">{{ user?.username }}</span>
 </div>
 
 <div class="info-line">
-  邮箱: <span class="profile-info">{{ user?.email }}</span>
+  邮箱: <span class="user-info">{{ user?.email }}</span>
 </div>
 
 <div class="info-line">
-  部门: <span class="profile-info">{{ user?.department }}</span>
+  部门: <span class="user-info">{{ user?.department }}</span>
 </div>
 
 <div class="info-line">
-  组织: <span class="profile-info">{{ user?.organization }}</span>
+  组织: <span class="user-info">{{ user?.organization }}</span>
 </div>
 
-<div class="info-line profile-chips">
-  <span class="profile-field">角色: </span>
+<div class="info-line">
+  <span class="user-field">角色: </span>
   <ng-container [ngSwitch]="user?.role?.name">
     <span class="ng-chip chip-error" *ngSwitchCase="'admin'">
       {{ user?.role?.description }}
@@ -33,6 +33,6 @@
   </ng-container>
 </div>
 
-<div class="info-line profile-chips">
-  <span class="profile-field">项目组: </span>
+<div class="info-line">
+  <span class="user-field">项目组: </span>
 </div>

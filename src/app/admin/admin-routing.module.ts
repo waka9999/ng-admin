@@ -15,25 +15,25 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [AuthorizationGuard],
     canActivateChild: [AuthorizationGuard],
-    data: { permission: PERMISSIONS.Admin },
+    data: { permission: PERMISSIONS.Admin.base },
     children: [
       {
         path: 'users',
         loadChildren: () =>
           import('./users/users.module').then((mod) => mod.UsersModule),
-        data: { permission: PERMISSIONS.Users },
+        data: { permission: PERMISSIONS.Admin.users.base },
       },
       {
         path: 'roles',
         loadChildren: () =>
           import('./roles/roles.module').then((mod) => mod.RolesModule),
-        data: { permission: PERMISSIONS.Roles },
+        data: { permission: PERMISSIONS.Admin.roles.base },
       },
       {
         path: 'groups',
         loadChildren: () =>
           import('./groups/groups.module').then((mod) => mod.GroupsModule),
-        data: { permission: PERMISSIONS.Groups },
+        data: { permission: PERMISSIONS.Admin.groups.base },
       },
     ],
   },

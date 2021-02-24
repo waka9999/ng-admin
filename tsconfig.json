@@ -30,6 +30,12 @@
       "@core/*": [
         "src/core/*"
       ],
+      "@templates": [
+        "src/templates"
+      ],
+      "@templates/*": [
+        "src/templates/*"
+      ],
     }
   },
   "angularCompilerOptions": {

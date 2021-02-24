@@ -10,6 +10,7 @@ $ng-notify-comp-notify-visible-display: flex !default;
   @include ng-flex-row-start-center;
   position: relative;
   width: 100%;
+  height:40px;
   padding: 0.5rem;
   margin-top: $ng-notify-app-notify-margin-top;
   overflow: hidden;

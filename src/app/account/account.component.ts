@@ -4,9 +4,11 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ACCOUNT_HEADING } from '@core/models/heading';
-import { InjectBase } from '@core/shared/inject.base';
+import { User } from '@core/models/users';
+import { AuthenticationService } from '@core/services/authentication.service';
+import { confirmValidator, FormBase } from '@core/shared/form.base';
 import { customAnimation } from 'projects/templates/src/public-api';
 
 @Component({
@@ -17,37 +19,35 @@ import { customAnimation } from 'projects/templates/src/public-api';
   animations: [customAnimation],
   host: { class: 'app-account simple-page' },
 })
-export class AccountComponent extends InjectBase implements OnInit {
-  active: 'profile' | 'password' = 'profile';
+export class AccountComponent extends FormBase implements OnInit {
+  user!: User;
+  password = new FormControl('', [Validators.required]);
+  password1 = new FormControl('', [Validators.required]);
+  password2 = new FormControl('', [
+    Validators.required,
+    confirmValidator(this.password1),
+  ]);
 
-  constructor(injector: Injector, private router: Router) {
+  constructor(
+    injector: Injector,
+    private formBuilder: FormBuilder,
+    private auth: AuthenticationService
+  ) {
     super(injector);
+    this.formGroup = this.formBuilder.group({
+      password: this.password,
+      password1: this.password1,
+      password2: this.password2,
+    });
   }
 
   ngOnInit(): void {
+    super.ngOnInit();
+    this.user = this.auth.current();
     this.initHeading(ACCOUNT_HEADING);
-    this.initTabsRoute();
   }
 
-  private initTabsRoute(): void {
-    if (this.router.url.endsWith('profile')) {
-      this.active = 'profile';
-      return;
-    }
-
-    if (this.router.url.endsWith('password')) {
-      this.active = 'password';
-      return;
-    }
-  }
-
-  profile(): void {
-    this.active = 'profile';
-    this.router.navigate(['/account/profile']);
-  }
-
-  password(): void {
-    this.active = 'password';
-    this.router.navigate(['/account/password']);
+  submit(): void {
+    console.log(this.formGroup.value);
   }
 }

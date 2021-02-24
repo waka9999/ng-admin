@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { ROLES_HEADING } from '@core/models/heading';
 import { Role, ROLES_DATA } from '@core/models/roles';
 import { InjectBase } from '@core/shared/inject.base';
@@ -29,7 +28,7 @@ export class RolesComponent extends InjectBase implements OnInit {
   pageSize!:number;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(injector: Injector, private router: Router) {
+  constructor(injector: Injector) {
     super(injector);
   }
 

@@ -1,20 +1,70 @@
 <ng-heading></ng-heading>
 <main>
-  <nav mat-tab-nav-bar class="ng-tab-navbar">
-    <a
-      mat-tab-link
-      (click)="profile()"
-      [active]="active === 'profile'"
-      title="信息"
-      >信息</a
+  <mat-tab-group>
+    <mat-tab label="信息">
+      <ng-template matTabContent>
+        <app-user-info [user]="user"></app-user-info>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="密码">
+      <ng-template matTabContent>
+        <form class="password-form" (ngSubmit)="submit()">
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="旧密码"
+              [formControl]="password"
+              [errorStateMatcher]="matcher"
+              tabindex="1"
+            />
+            <mat-error *ngIf="password.hasError('required')">
+              旧密码必须输入
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="新密码"
+              [formControl]="password1"
+              [errorStateMatcher]="matcher"
+              tabindex="2"
+            />
+            <mat-error *ngIf="password1.hasError('required')">
+              新密码必须输入
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="确认密码"
+              [formControl]="password2"
+              [errorStateMatcher]="matcher"
+              tabindex="3"
+            />
+            <mat-error *ngIf="password2.hasError('required')">
+              确认密码必须输入
+            </mat-error>
+            <mat-error *ngIf="password2.hasError('notMatch')">
+              确认密码不一致
+            </mat-error>
+          </mat-form-field>
+          <div class="form-actions">
+            <button
+              type="submit"
+              mat-flat-button
+              color="primary"
+              tabindex="4"
+              [disabled]="formGroup.invalid || formGroup.disabled"
+            >
+              提交
+            </button>
+          </div>
+        </form>
+      </ng-template></mat-tab
     >
-    <a
-      mat-tab-link
-      (click)="password()"
-      [active]="active === 'password'"
-      title="密码"
-      >密码</a
-    >
-  </nav>
-  <router-outlet></router-outlet>
+  </mat-tab-group>
 </main>

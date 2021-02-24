@@ -14,6 +14,7 @@ import {
 import { Heading, HeadingService } from 'projects/templates/src/public-api';
 import { LayoutService } from '@core/services/layout.service';
 import { ConfigService } from '@core/services/config.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Directive()
 export abstract class InjectBase
@@ -23,11 +24,15 @@ export abstract class InjectBase
   private mediaMatcher!: MediaMatcher;
   private removeEventListeners: { (): void }[];
   private headingService!: HeadingService;
+  protected router!: Router;
+  protected route!: ActivatedRoute;
   protected configService!: ConfigService;
   protected changeDetectorRef!: ChangeDetectorRef;
   protected layoutService!: LayoutService;
   constructor(injector: Injector) {
     super();
+    this.router = injector.get(Router);
+    this.route = injector.get(ActivatedRoute);
     this.breakpointObserver = injector.get(BreakpointObserver);
     this.mediaMatcher = injector.get(MediaMatcher);
     this.configService = injector.get(ConfigService);

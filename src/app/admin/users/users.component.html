@@ -7,10 +7,14 @@
   <ng-notify #notify></ng-notify>
   <div class="app-page-statistics">
     <ng-text-statistic [title]="'管理员'">
-      <a [routerLink]="adminUserFilter()">{{ adminUsers() }}</a>
+      <a routerLink="/admin/users" [queryParams]="{ role: 'admin' }">{{
+        adminUsers()
+      }}</a>
     </ng-text-statistic>
     <ng-text-statistic [title]="'启用'">
-      <a [routerLink]="enableUserFilter()">{{ enableUsers() }}</a>
+      <a routerLink="/admin/users" [queryParams]="{ state: '1' }">{{
+        enableUsers()
+      }}</a>
     </ng-text-statistic>
   </div>
   <div class="app-page-actions">
@@ -18,6 +22,7 @@
       <button
         mat-stroked-button
         [ngDisableIfUnauthorized]="'writable'"
+        [ngHideIfUnauthorized]="'admin_users_create'"
         class="action"
         color="primary"
         (click)="create()"
@@ -40,15 +45,25 @@
     </div>
   </div>
   <div class="page-table">
-    <mat-table [dataSource]="dataSource">
+    <mat-table [dataSource]="dataSource" class="table-link">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> 姓名 </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row?.name }} </mat-cell>
+        <mat-cell *matCellDef="let row">
+          <a
+            class="ng-primary"
+            [routerLink]="['/admin/users/' + row?.id]"
+            [title]="row?.name"
+          >
+            {{ row?.name }}</a
+          >
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="username">
         <mat-header-cell *matHeaderCellDef> 用户名 </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row?.username }} </mat-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row?.username }}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="email">

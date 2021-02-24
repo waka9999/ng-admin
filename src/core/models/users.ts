@@ -7,7 +7,7 @@ export interface UserResult {
 }
 
 export interface User {
-  id: number;
+  id: string;
   name: string;
   username: string;
   password?: string;
@@ -22,7 +22,7 @@ export interface User {
 }
 
 export const BLANK_USER: User = {
-  id: -1,
+  id: '',
   name: '',
   username: '',
   email: '',
@@ -33,7 +33,7 @@ export const BLANK_USER: User = {
 
 export const USERS_DATA: User[] = [
   {
-    id: 1,
+    id: '1',
     name: '哇咔',
     username: 'waka9999',
     password: '123456',
@@ -46,7 +46,7 @@ export const USERS_DATA: User[] = [
     updateDate: Date.now().toString(),
   },
   {
-    id: 2,
+    id: '2',
     name: '只读',
     username: 'readonly',
     password: '123456',
@@ -59,7 +59,7 @@ export const USERS_DATA: User[] = [
     updateDate: Date.now().toString(),
   },
   {
-    id: 3,
+    id: '3',
     name: '用户',
     username: 'user',
     password: '123456',

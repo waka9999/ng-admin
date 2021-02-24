@@ -18,7 +18,7 @@ import { customAnimation } from 'projects/templates/src/public-api';
   animations: [customAnimation],
 })
 export class CreateComponent extends InjectBase implements OnInit {
-  constructor(injector: Injector, private router: Router) {
+  constructor(injector: Injector) {
     super(injector);
   }
 

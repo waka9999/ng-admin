@@ -7,20 +7,20 @@ export const NAV_LIST_ITEMS: NavListItem[] = [
     href: '/admin/users',
     title: '用户',
     text: '用户',
-    permission: PERMISSIONS.Users,
+    permission: PERMISSIONS.Admin.users.base,
   },
   {
     id: 2,
     href: '/admin/roles',
     title: '角色',
     text: '角色',
-    permission: PERMISSIONS.Roles,
+    permission: PERMISSIONS.Admin.roles.base,
   },
   {
     id: 3,
     href: '/admin/groups',
     title: '项目组',
     text: '项目组',
-    permission: PERMISSIONS.Groups,
+    permission: PERMISSIONS.Admin.groups.base,
   },
 ];

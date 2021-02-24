@@ -9,7 +9,7 @@ import {
 import { USERS_HEADING } from '@core/models/heading';
 import { InjectBase } from '@core/shared/inject.base';
 import { User } from '@core/models/users';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {
   customAnimation,
   NotifyComponent,
@@ -50,10 +50,9 @@ export class UsersComponent
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(
     injector: Injector,
-    private router: Router,
-    private route: ActivatedRoute
   ) {
     super(injector);
   }
@@ -102,21 +101,18 @@ export class UsersComponent
   }
 
   private routerProcess(): void {
-    this.route.params.pipe(takeUntil(this.destroy$)).subscribe((data) => {
+    this.route.queryParams.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data) {
-        switch (data.filter) {
-          case 'admin':
-            this.dataSource.data = this.filterSource.data.filter(
-              (data) => data?.role?.name === 'admin'
-            );
-            break;
-          case 'enable':
-            this.dataSource.data = this.filterSource.data.filter(
-              (data) => data.state === 1
-            );
-            break;
+        if (data.role === 'admin') {
+          this.dataSource.data = this.filterSource.data.filter(
+            (data) => data?.role?.name === 'admin'
+          );
         }
-        this.changeDetectorRef.markForCheck();
+        if (data.state === '1') {
+          this.dataSource.data = this.filterSource.data.filter(
+            (data) => data.state === 1
+          );
+        }
       }
     });
   }
@@ -145,15 +141,7 @@ export class UsersComponent
       .length;
   }
 
-  adminUserFilter(): string {
-    return '/admin/users/admin';
-  }
-
   enableUsers(): number {
     return this.filterSource.data.filter((data) => data.state === 1).length;
-  }
-
-  enableUserFilter(): string {
-    return '/admin/users/enable';
   }
 }

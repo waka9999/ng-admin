@@ -1,7 +1,7 @@
 import { PERMISSIONS } from './permission';
 
 export interface Role {
-  id: number;
+  id: string;
   name: string;
   description: string;
   permissions: string[];
@@ -11,17 +11,19 @@ export interface Role {
 }
 
 export const roleAdmin = {
-  id: 1,
+  id: '1',
   name: 'admin',
   description: '管理员',
   permissions: [
     PERMISSIONS.Writable,
-    PERMISSIONS.Admin,
-    PERMISSIONS.Dashboard,
-    PERMISSIONS.Logs,
-    PERMISSIONS.Users,
-    PERMISSIONS.Roles,
-    PERMISSIONS.Groups,
+    PERMISSIONS.Dashboard.base,
+    PERMISSIONS.Logs.base,
+    PERMISSIONS.Admin.base,
+    PERMISSIONS.Admin.users.base,
+    PERMISSIONS.Admin.users.create,
+    PERMISSIONS.Admin.users.details,
+    PERMISSIONS.Admin.roles.base,
+    PERMISSIONS.Admin.groups.base,
   ],
   readonly: false,
   inputDate: Date.now().toString(),
@@ -29,16 +31,18 @@ export const roleAdmin = {
 };
 
 export const roleReadonly = {
-  id: 2,
+  id: '2',
   name: 'readonly',
   description: '只读',
   permissions: [
-    PERMISSIONS.Admin,
-    PERMISSIONS.Dashboard,
-    PERMISSIONS.Logs,
-    PERMISSIONS.Users,
-    PERMISSIONS.Roles,
-    PERMISSIONS.Groups,
+    PERMISSIONS.Dashboard.base,
+    PERMISSIONS.Logs.base,
+    PERMISSIONS.Admin.base,
+    PERMISSIONS.Admin.users.base,
+    PERMISSIONS.Admin.users.create,
+    PERMISSIONS.Admin.users.details,
+    PERMISSIONS.Admin.roles.base,
+    PERMISSIONS.Admin.groups.base,
   ],
   readonly: true,
   inputDate: Date.now().toString(),
@@ -46,10 +50,10 @@ export const roleReadonly = {
 };
 
 export const roleUser = {
-  id: 3,
+  id: '3',
   name: 'user',
   description: '用户',
-  permissions: [PERMISSIONS.Dashboard, PERMISSIONS.Logs],
+  permissions: [PERMISSIONS.Dashboard.base, PERMISSIONS.Logs.base],
   readonly: false,
   inputDate: Date.now().toString(),
   updateDate: Date.now().toString(),

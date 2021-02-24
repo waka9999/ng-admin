@@ -19,6 +19,13 @@ export const USERS_CREATE_HEADING: Heading = {
   returnLink: '/admin/users',
 };
 
+export const USERS_DETAIL_HEADING: Heading = {
+  text: '用户详细',
+  level: 1,
+  icon: 'arrow_back_ios_new',
+  returnLink: '/admin/users',
+};
+
 export const ROLES_HEADING: Heading = {
   text: '角色',
   level: 0,

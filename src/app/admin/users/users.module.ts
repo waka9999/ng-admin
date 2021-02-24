@@ -20,22 +20,27 @@ import {
 } from 'projects/templates/src/public-api';
 import { UsersResolver } from '@core/reslovers/users/users.resolver';
 import { UsersService } from '@core/services/users.service';
-import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DetailsComponent } from './details/details.component';
+import { UserInfoModule } from '@templates/components/user-info/user-info.module';
 
 @NgModule({
-  declarations: [UsersComponent, CreateComponent],
+  declarations: [UsersComponent, CreateComponent, DetailsComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
     FilterModule,
     MatButtonModule,
     MatTableModule,
+    MatTabsModule,
     MatPaginatorModule,
-    MatChipsModule,
+    MatFormFieldModule,
     BlankModule,
     TextStatisticModule,
-    AuthorizedModule,
     NotifyModule,
+    AuthorizedModule,
+    UserInfoModule,
   ],
   providers: [
     {

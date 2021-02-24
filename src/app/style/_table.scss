@@ -5,7 +5,7 @@
   $primary: mat-color($color, primary);
   $foreground: mat-color($color, foreground);
 
-  .page-table{
+  .page-table {
     @include mat-elevation(1);
   }
 
@@ -15,7 +15,21 @@
     background-color: #fafafa;
     border-top: 1px solid mat-color($foreground, divider);
   }
-  .mat-paginator{
+  .mat-paginator {
     background-color: #fafafa;
+  }
+
+  .mat-table.table-link {
+    .mat-row {
+      &:hover {
+        background: rgba(0, 0, 0, 0.04);
+        .mat-cell {
+          transition: all 100ms ease-out;
+        }
+      }
+      a {
+        text-decoration: none;
+      }
+    }
   }
 }

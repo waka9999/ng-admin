@@ -15,7 +15,6 @@ import {
   NavigationError,
   RouteConfigLoadEnd,
   RouteConfigLoadStart,
-  Router,
 } from '@angular/router';
 import { CONTAINER, Mobile } from '@core/models/layout';
 import { BRAND, HEADER_NAVBAR_ITEMS } from '@core/models/header';
@@ -52,7 +51,6 @@ export class AppComponent extends InjectBase implements OnInit {
     private title: Title,
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private router: Router,
     private dialog: MatDialog,
     private auth: AuthenticationService,
     private notify: NotifyService

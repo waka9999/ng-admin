@@ -23,7 +23,7 @@ export class AuthorizationService {
         }
 
         if (
-          permissions.find((p) => {
+          permissions.find((p: string) => {
             return p === permission;
           })
         ) {

@@ -156,6 +156,10 @@ export class AppComponent extends InjectBase implements OnInit {
     this.notify.initFactory(this.notifyContainer);
   }
 
+  about(): void {
+    this.router.navigate(['/about']);
+  }
+
   account(): void {
     this.router.navigate(['/account']);
   }

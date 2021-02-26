@@ -49,3 +49,21 @@ export const ACCOUNT_HEADING: Heading = {
   level: -1,
   icon: 'person',
 };
+
+export const LOGS_HEADING: Heading = {
+  text: '日志',
+  level: -1,
+  icon: 'text_snippet',
+};
+
+export const SERVICES_HEADING: Heading = {
+  text: '服务',
+  level: 0,
+  icon: 'menu',
+};
+
+export const CREDENTIALS_HEADING: Heading = {
+  text: '凭据',
+  level: 0,
+  icon: 'menu',
+};

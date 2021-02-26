@@ -1,27 +1,27 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { ADMIN_NAV_LIST_ITEMS } from '@core/models/sidenav';
-import { InjectBase } from '@core/shared/inject.base';
+import { ChangeDetectionStrategy, Injector, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Mobile } from '@core/models/layout';
+import { PLATFORM_NAV_LIST_ITEMS } from '@core/models/sidenav';
+import { InjectBase } from '@core/shared/inject.base';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  selector: 'app-platform',
+  templateUrl: './platform.component.html',
+  styleUrls: ['./platform.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { class: 'app-admin' },
+  host: { class: 'app-platform' },
 })
-export class AdminComponent extends InjectBase implements OnInit {
+export class PlatformComponent  extends InjectBase implements OnInit {
   mobile!: Mobile;
 
   showMenu = false;
   sideNavMode: 'over' | 'push' | 'side' = 'over';
   hasBackdrop: boolean = false;
 
-  navItems = ADMIN_NAV_LIST_ITEMS;
+  navItems = PLATFORM_NAV_LIST_ITEMS;
 
   @ViewChild('snav', { static: true })
   snav!: MatSidenav;

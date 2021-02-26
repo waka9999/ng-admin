@@ -9,7 +9,7 @@ import { USERS_DETAIL_HEADING } from '@core/models/heading';
 import { Message } from '@core/models/message';
 import { USER_UPDATE_FAILED } from '@core/models/notification';
 import { PERMISSIONS } from '@core/models/permission';
-import { Role, ROLES_DATA } from '@core/models/roles';
+import { Role } from '@core/models/roles';
 import { User } from '@core/models/users';
 import { GroupsService } from '@core/services/groups.service';
 import { RolesService } from '@core/services/roles.service';

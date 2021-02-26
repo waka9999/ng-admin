@@ -30,6 +30,13 @@ const routes: Routes = [
       import('./admin/admin.module').then((mod) => mod.AdminModule),
   },
   {
+    path: 'platform',
+    canActivate: [AuthenticationGuard],
+    canActivateChild: [AuthenticationGuard],
+    loadChildren: () =>
+      import('./platform/platform.module').then((mod) => mod.PlatformModule),
+  },
+  {
     path: 'auth',
     canActivate: [CookieGuard],
     loadChildren: () =>
@@ -40,6 +47,12 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard],
     loadChildren: () =>
       import('./dashboard/dashboard.module').then((mod) => mod.DashboardModule),
+  },
+  {
+    path: 'logs',
+    canActivate: [AuthenticationGuard],
+    loadChildren: () =>
+      import('./logs/logs.module').then((mod) => mod.LogsModule),
   },
   {
     path: 'unauthorized',

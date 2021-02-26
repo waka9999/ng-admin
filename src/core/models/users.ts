@@ -69,7 +69,7 @@ export const USERS_DATA: User[] = [
     department: '部门',
     organization: '组织',
     role: roleUser,
-    state: 0,
+    state: 1,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
   },

@@ -62,6 +62,19 @@ const Admin = {
   groups: AdminGroups,
 };
 
+const PlatformServices = {
+  base: 'platform_services',
+};
+const PlatformCredentials = {
+  base: 'platform_credentials',
+};
+
+const Platform = {
+  base: 'platform',
+  services: PlatformServices,
+  credentials: PlatformCredentials,
+};
+
 const Dashboard = {
   base: 'dashboard',
 };
@@ -72,7 +85,8 @@ const Logs = {
 
 export const PERMISSIONS = {
   Writable: 'writable',
+  Admin,
+  Platform,
   Dashboard,
   Logs,
-  Admin,
 };

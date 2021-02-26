@@ -4,16 +4,19 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Group } from '@core/models/groups';
 import { USERS_CREATE_HEADING } from '@core/models/heading';
+import { Message } from '@core/models/message';
 import { USER_CREATE_SUCCESS } from '@core/models/notification';
-import { Role, ROLES_DATA } from '@core/models/roles';
+import { Role } from '@core/models/roles';
 import { User } from '@core/models/users';
 import { GroupsService } from '@core/services/groups.service';
 import { RolesService } from '@core/services/roles.service';
 import { InjectBase } from '@core/shared/inject.base';
-import { customAnimation } from 'projects/templates/src/public-api';
+import {
+  customAnimation,
+  Notification,
+} from 'projects/templates/src/public-api';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -55,7 +58,7 @@ export class CreateComponent extends InjectBase implements OnInit {
       .subscribe((groups) => (this.groups = groups));
   }
 
-  click(): void {
+  submit(message:Message): void {
     this.router.navigate(['/admin/users'], {
       state: { notification: USER_CREATE_SUCCESS },
     });

@@ -29,3 +29,15 @@ export const USER_CREATE_SUCCESS: Notification = {
   visible: true,
   message: '新建用户成功。',
 };
+
+export const USER_UPDATE_FAILED: Notification = {
+  type: NotifyType.Error,
+  visible: true,
+  message: '更新用户失败。',
+};
+
+export const ACCOUNT_CHANGE_PASSWORD_SUCCESS: Notification = {
+  type: NotifyType.Success,
+  visible: true,
+  message: '修改密码成功。',
+};

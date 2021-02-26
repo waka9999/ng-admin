@@ -7,87 +7,76 @@
       </ng-template>
     </mat-tab>
     <mat-tab label="密码">
-      <ng-template matTabContent>
-        <form class="form-column" (ngSubmit)="submit()">
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>旧密码</mat-label>
-              <input
-                type="password"
-                matInput
-                placeholder="旧密码"
-                [formControl]="password"
-                [errorStateMatcher]="matcher"
-                tabindex="1"
-                required
-              />
-              <mat-hint align="end">旧密码必须输入</mat-hint>
-              <mat-error *ngIf="password.hasError('required')">
-                旧密码必须输入
-              </mat-error>
-            </mat-form-field>
-          </p>
+      <ng-notify #notify></ng-notify>
+      <form class="form-column" (ngSubmit)="changePassword()">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>旧密码</mat-label>
+            <input
+              type="password"
+              matInput
+              placeholder="旧密码"
+              [formControl]="password"
+              [errorStateMatcher]="matcher"
+              tabindex="1"
+              required
+            />
+            <mat-hint align="end">旧密码必须输入</mat-hint>
+            <mat-error *ngIf="password.hasError('required')">
+              旧密码必须输入
+            </mat-error>
+          </mat-form-field>
+        </p>
 
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>新密码</mat-label>
-              <input
-                type="password"
-                matInput
-                placeholder="新密码"
-                [formControl]="password1"
-                [errorStateMatcher]="matcher"
-                tabindex="2"
-                required
-              />
-              <mat-hint align="end">新密码必须输入,长度大于等于8位</mat-hint>
-              <mat-error *ngIf="password1.hasError('required')">
-                新密码必须输入
-              </mat-error>
-              <mat-error *ngIf="password1.hasError('minlength')">
-                新密码长度大于等于8位
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label>确认密码</mat-label>
-              <input
-                type="password"
-                matInput
-                placeholder="确认新密码"
-                [formControl]="password2"
-                [errorStateMatcher]="matcher"
-                tabindex="3"
-                required
-              />
-              <mat-hint align="end"
-                >确认新密码必须输入,长度大于等于8位</mat-hint
-              >
-              <mat-error *ngIf="password2.hasError('required')">
-                确认密码必须输入
-              </mat-error>
-              <mat-error *ngIf="password2.hasError('notMatch')">
-                确认密码不一致
-              </mat-error>
-              <mat-error *ngIf="password2.hasError('minlength')">
-                确认密码长度大于等于8位
-              </mat-error>
-            </mat-form-field>
-          </p>
-          <div class="form-actions">
-            <button
-              type="submit"
-              mat-flat-button
-              color="primary"
-              tabindex="4"
-              [disabled]="formGroup.invalid || formGroup.disabled"
-            >
-              提交
-            </button>
-          </div>
-        </form>
-      </ng-template></mat-tab
-    >
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>新密码</mat-label>
+            <input
+              type="password"
+              matInput
+              placeholder="新密码"
+              [formControl]="password1"
+              [errorStateMatcher]="matcher"
+              tabindex="2"
+              required
+            />
+            <mat-hint align="end">新密码必须输入,长度大于等于8位</mat-hint>
+            <mat-error *ngIf="password1.hasError('required')">
+              新密码必须输入
+            </mat-error>
+            <mat-error *ngIf="password1.hasError('minlength')">
+              新密码长度大于等于8位
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>确认密码</mat-label>
+            <input
+              type="password"
+              matInput
+              placeholder="确认新密码"
+              [formControl]="password2"
+              [errorStateMatcher]="matcher"
+              tabindex="3"
+              required
+            />
+            <mat-hint align="end">确认新密码必须输入,长度大于等于8位</mat-hint>
+            <mat-error *ngIf="password2.hasError('required')">
+              确认密码必须输入
+            </mat-error>
+            <mat-error *ngIf="password2.hasError('notMatch')">
+              确认密码不一致
+            </mat-error>
+            <mat-error *ngIf="password2.hasError('minlength')">
+              确认密码长度大于等于8位
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <div class="form-actions">
+          <button mat-flat-button color="primary" tabindex="4">提交</button>
+        </div>
+      </form>
+    </mat-tab>
   </mat-tab-group>
 </main>

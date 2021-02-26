@@ -3,16 +3,15 @@ import {
   Component,
   Injector,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ACCOUNT_HEADING } from '@core/models/heading';
-import { Role } from '@core/models/roles';
+import { ACCOUNT_CHANGE_PASSWORD_SUCCESS } from '@core/models/notification';
 import { User } from '@core/models/users';
 import { AuthenticationService } from '@core/services/authentication.service';
-import { RolesService } from '@core/services/roles.service';
 import { confirmValidator, FormBase } from '@core/shared/form.base';
-import { customAnimation } from 'projects/templates/src/public-api';
-import { takeUntil } from 'rxjs/operators';
+import { customAnimation, NotifyComponent } from 'projects/templates/src/public-api';
 
 @Component({
   selector: 'app-account',
@@ -23,6 +22,9 @@ import { takeUntil } from 'rxjs/operators';
   host: { class: 'app-account simple-page' },
 })
 export class AccountComponent extends FormBase implements OnInit {
+  @ViewChild('notify', { static: true, read: NotifyComponent })
+  notify!: NotifyComponent;
+  
   user!: User;
   password = new FormControl('', [Validators.required]);
   password1 = new FormControl('', [
@@ -58,8 +60,8 @@ export class AccountComponent extends FormBase implements OnInit {
     this.user = this.auth.current();
   }
 
-  submit(): void {
-    console.log(this.formGroup.value);
+  changePassword(): void {
+    this.notify.show(ACCOUNT_CHANGE_PASSWORD_SUCCESS);
   }
 
   change(): void {

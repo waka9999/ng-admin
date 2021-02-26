@@ -1,12 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Injector,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Group } from '@core/models/groups';
+import { USER_CREATE_SUCCESS } from '@core/models/notification';
 import { Role } from '@core/models/roles';
 import { User } from '@core/models/users';
 import { FormBase } from '@core/shared/form.base';
@@ -24,6 +27,7 @@ export class UserInfoComponent extends FormBase implements OnInit {
   @Input() user!: User;
   @Input() roles!: Role[];
   @Input() groups!: Group[];
+  @Output() submit = new EventEmitter();
 
   name = new FormControl('', [
     Validators.required,
@@ -67,9 +71,6 @@ export class UserInfoComponent extends FormBase implements OnInit {
   ngOnInit(): void {
     super.ngOnInit();
     this.initFormGroup();
-    console.log(this.user);
-    console.log(this.roles);
-    console.log(this.groups);
   }
 
   private initFormGroup(): void {
@@ -94,5 +95,7 @@ export class UserInfoComponent extends FormBase implements OnInit {
     return false;
   }
 
-  submit(): void {}
+  click(): void {
+    this.submit.emit({});
+  }
 }

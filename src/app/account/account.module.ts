@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
-import { HeadingModule } from 'projects/templates/src/public-api';
+import { HeadingModule, NotifyModule } from 'projects/templates/src/public-api';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +24,7 @@ import { UserInfoModule } from 'src/templates/components/user-info/user-info.mod
     MatButtonModule,
     MatFormFieldModule,
     UserInfoModule,
+    NotifyModule,
   ],
 })
 export class AccountModule {}

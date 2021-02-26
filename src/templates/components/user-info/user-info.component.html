@@ -1,4 +1,4 @@
-<form class="form-column" (ngSubmit)="submit()">
+<form class="form-column" (ngSubmit)="click()">
   <h3>基本信息</h3>
   <p>
     <mat-form-field [appearance]="appearance">
@@ -188,11 +188,14 @@
   </ng-template>
 
   <ng-container *ngIf="user?.groups; else mulit">
-    <ng-container *ngIf="groups;else list">
+    <ng-container *ngIf="groups; else list">
       <div class="form-list">
         <span>项目组 (多选)</span>
         <mat-selection-list>
-          <mat-list-option *ngFor="let group of groups" [selected]="inGroup(group?.id)">
+          <mat-list-option
+            *ngFor="let group of groups"
+            [selected]="inGroup(group?.id)"
+          >
             <h3 matLine>{{ group?.description }}</h3>
             <span matLine class="form-hint">
               {{ group?.memo }}
@@ -214,7 +217,6 @@
         </mat-selection-list>
       </div>
     </ng-template>
-    
   </ng-container>
   <ng-template #mulit>
     <div class="form-list" *ngIf="groups">
@@ -231,7 +233,7 @@
   </ng-template>
 
   <div class="form-actions" *ngIf="editable">
-    <button
+    <!-- <button
       type="submit"
       mat-flat-button
       color="primary"
@@ -239,5 +241,7 @@
     >
       提交
     </button>
+  -->
+    <button mat-flat-button color="primary">提交</button>
   </div>
 </form>

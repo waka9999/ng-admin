@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 import { Group } from '@core/models/groups';
 import { USERS_DETAIL_HEADING } from '@core/models/heading';
+import { Message } from '@core/models/message';
+import { USER_UPDATE_FAILED } from '@core/models/notification';
 import { PERMISSIONS } from '@core/models/permission';
 import { Role, ROLES_DATA } from '@core/models/roles';
 import { User } from '@core/models/users';
@@ -125,6 +127,12 @@ export class DetailsComponent extends InjectBase implements OnInit {
     this.active = 'logs';
     this.router.navigate(['/admin/users/' + this.user.id + '/logs'], {
       state: { user: this.user },
+    });
+  }
+
+  submit(message:Message): void {
+    this.router.navigate(['/admin/users'], {
+      state: { notification: USER_UPDATE_FAILED },
     });
   }
 }

@@ -64,6 +64,10 @@ export class NotifyComponent implements OnInit {
       setTimeout(() => {
         this.close();
       }, 3000);
+    }else{
+      setTimeout(() => {
+        this.close();
+      }, 10000);
     }
     this.changeDetectorRef.markForCheck();
   }

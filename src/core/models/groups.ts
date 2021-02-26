@@ -1,8 +1,8 @@
 export interface Group {
-  id: number;
+  id: string;
   name: string;
-  department: string;
-  organization: string;
+  description: string;
+  memo: string;
   servicesId?: number[];
   inputDate: string;
   updateDate: string;
@@ -10,10 +10,19 @@ export interface Group {
 
 export const GROUPS_DATA: Group[] = [
   {
-    id: 1,
-    name: '研发',
-    department: '容器服务',
-    organization: '研发中心',
+    id: '1',
+    name: 'development',
+    description: '研发',
+    memo: 'Service-1,Service-2,Service-3',
+    servicesId: [1],
+    inputDate: Date.now().toString(),
+    updateDate: Date.now().toString(),
+  },
+  {
+    id: '2',
+    name: 'operations',
+    description: '运维',
+    memo: '服务-1,服务-2,服务-3',
     servicesId: [1],
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),

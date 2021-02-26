@@ -31,11 +31,11 @@ $ng-light-theme: mat-light-theme(
 }
 
 @import "../about/about-theme";
-@import "/src/templates/components/user-info/user-info-theme";
+@import "./form";
 
 .ng-light-theme {
   @include app-about-theme($ng-light-theme);
-  @include app-user-info-theme($ng-light-theme);
+  @include app-form-theme($ng-light-theme);
 }
 
 .cdk-global-scrollblock {

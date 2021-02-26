@@ -1,38 +1,243 @@
-<div class="info-line">
-  姓名: <span class="user-info">{{ user?.name }}</span>
-</div>
+<form class="form-column" (ngSubmit)="submit()">
+  <h3>基本信息</h3>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>姓名</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="姓名"
+        [formControl]="name"
+        [errorStateMatcher]="matcher"
+        tabindex="1"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >姓名必须输入,长度大于等于2位,小于4位</mat-hint
+      >
+      <mat-error *ngIf="name.hasError('required')"> 姓名必须输入 </mat-error>
+      <mat-error *ngIf="name.hasError('minlength')">
+        姓名长度大于等于2位
+      </mat-error>
+      <mat-error *ngIf="name.hasError('maxlength')">
+        姓名长度小于4位
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>用户名</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="用户名"
+        [formControl]="username"
+        [errorStateMatcher]="matcher"
+        tabindex="2"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >用户名必须输入,长度大于等于6位</mat-hint
+      >
+      <mat-error *ngIf="username.hasError('required')">
+        用户名必须输入
+      </mat-error>
+      <mat-error *ngIf="username.hasError('minlength')">
+        用户名长度大于等于6位
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>密码</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="密码"
+        [formControl]="password"
+        [errorStateMatcher]="matcher"
+        tabindex="3"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >密码必须输入,长度大于等于8位</mat-hint
+      >
+      <mat-error *ngIf="password.hasError('required')">
+        密码必须输入
+      </mat-error>
+      <mat-error *ngIf="password.hasError('minlength')">
+        密码长度大于等于8位
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>邮箱</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="邮箱"
+        [formControl]="email"
+        [errorStateMatcher]="matcher"
+        tabindex="4"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >邮箱必须输入,长度大于等于12位</mat-hint
+      >
+      <mat-error *ngIf="email.hasError('required')"> 邮箱必须输入 </mat-error>
+      <mat-error *ngIf="email.hasError('email')"> 邮箱格式不正确 </mat-error>
+      <mat-error *ngIf="password.hasError('minlength')">
+        邮箱长度大于等于12位
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>部门</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="部门"
+        [formControl]="department"
+        [errorStateMatcher]="matcher"
+        tabindex="5"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >部门必须输入, 部门长度小于16位</mat-hint
+      >
+      <mat-error *ngIf="department.hasError('required')">
+        部门必须输入
+      </mat-error>
+      <mat-error *ngIf="department.hasError('maxlength')">
+        部门长度小于16位
+      </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field [appearance]="appearance">
+      <mat-label>组织</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="组织"
+        [formControl]="organization"
+        [errorStateMatcher]="matcher"
+        tabindex="6"
+        required
+      />
+      <mat-hint class="form-hint" *ngIf="editable" align="end"
+        >组织必须输入, 部门长度小于64位</mat-hint
+      >
+      <mat-error *ngIf="organization.hasError('required')">
+        组织必须输入
+      </mat-error>
+      <mat-error *ngIf="organization.hasError('maxlength')">
+        组织长度小于64位
+      </mat-error>
+    </mat-form-field>
+  </p>
 
-<div class="info-line">
-  用户名: <span class="user-info">{{ user?.username }}</span>
-</div>
+  <h3>平台信息</h3>
 
-<div class="info-line">
-  邮箱: <span class="user-info">{{ user?.email }}</span>
-</div>
-
-<div class="info-line">
-  部门: <span class="user-info">{{ user?.department }}</span>
-</div>
-
-<div class="info-line">
-  组织: <span class="user-info">{{ user?.organization }}</span>
-</div>
-
-<div class="info-line">
-  <span class="user-field">角色: </span>
-  <ng-container [ngSwitch]="user?.role?.name">
-    <span class="ng-chip chip-error" *ngSwitchCase="'admin'">
-      {{ user?.role?.description }}
-    </span>
-    <span class="ng-chip chip-success" *ngSwitchCase="'readonly'">
-      {{ user?.role?.description }}
-    </span>
-    <span class="ng-chip chip-info" *ngSwitchDefault>
-      {{ user?.role?.description }}
-    </span>
+  <ng-container *ngIf="user?.role; else option">
+    <ng-container *ngIf="roles; else ratio">
+      <div class="form-list" *ngIf="roles">
+        <span>角色 (单选)</span>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option
+            *ngFor="let role of roles"
+            [value]="role?.id"
+            [selected]="user?.role?.id === role?.id"
+          >
+            <h3 matLine>{{ role?.description }}</h3>
+            <span matLine class="form-hint">
+              {{ role?.memo }}
+            </span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </ng-container>
+    <ng-template #ratio>
+      <div class="form-list">
+        <span>角色</span>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option [value]="user.role?.id" disabled>
+            <h3 matLine>{{ user.role?.description }}</h3>
+            <span matLine class="form-hint">
+              {{ user.role?.memo }}
+            </span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </ng-template>
   </ng-container>
-</div>
+  <ng-template #option>
+    <div class="form-list" *ngIf="roles">
+      <span>角色 (单选)</span>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option *ngFor="let role of roles" [value]="role?.id">
+          <h3 matLine>{{ role?.description }}</h3>
+          <span matLine class="form-hint">
+            {{ role?.memo }}
+          </span>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </ng-template>
 
-<div class="info-line">
-  <span class="user-field">项目组: </span>
-</div>
+  <ng-container *ngIf="user?.groups; else mulit">
+    <ng-container *ngIf="groups;else list">
+      <div class="form-list">
+        <span>项目组 (多选)</span>
+        <mat-selection-list>
+          <mat-list-option *ngFor="let group of groups" [selected]="inGroup(group?.id)">
+            <h3 matLine>{{ group?.description }}</h3>
+            <span matLine class="form-hint">
+              {{ group?.memo }}
+            </span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </ng-container>
+    <ng-template #list>
+      <div class="form-list">
+        <span>项目组</span>
+        <mat-selection-list [multiple]="false">
+          <mat-list-option *ngFor="let group of user?.groups" disabled>
+            <h3 matLine>{{ group?.description }}</h3>
+            <span matLine class="form-hint">
+              {{ group?.memo }}
+            </span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </ng-template>
+    
+  </ng-container>
+  <ng-template #mulit>
+    <div class="form-list" *ngIf="groups">
+      <span>项目组 (多选)</span>
+      <mat-selection-list group>
+        <mat-list-option *ngFor="let group of groups">
+          <h3 matLine>{{ group?.description }}</h3>
+          <span matLine class="form-hint">
+            {{ group?.memo }}
+          </span>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </ng-template>
+
+  <div class="form-actions" *ngIf="editable">
+    <button
+      type="submit"
+      mat-flat-button
+      color="primary"
+      [disabled]="formGroup.invalid || formGroup.disabled"
+    >
+      提交
+    </button>
+  </div>
+</form>

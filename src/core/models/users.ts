@@ -1,4 +1,4 @@
-import { Group } from './groups';
+import { Group, GROUPS_DATA } from './groups';
 import { Role, roleAdmin, roleReadonly, roleUser } from './roles';
 
 export interface UserResult {
@@ -41,6 +41,7 @@ export const USERS_DATA: User[] = [
     department: '部门',
     organization: '组织',
     role: roleAdmin,
+    groups:[GROUPS_DATA[0]],
     state: 1,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),
@@ -54,6 +55,7 @@ export const USERS_DATA: User[] = [
     department: '部门',
     organization: '组织',
     role: roleReadonly,
+    groups:[GROUPS_DATA[0]],
     state: 1,
     inputDate: Date.now().toString(),
     updateDate: Date.now().toString(),

@@ -1,8 +1,62 @@
-.mat-form-field .mat-form-field-infix {
-  width: 240px;
+@import "/projects/templates/src/lib/style/flex";
+
+$app-form-h3-margin-bottom: calc(var(--ng-delta) * 2) !default;
+
+@mixin app-form-base {
+  form {
+    h3 {
+      margin-bottom: $app-form-h3-margin-bottom;
+    }
+
+    .mat-form-field {
+      width: 240px;
+    }
+
+    .form-actions {
+      margin: 1rem 0;
+    }
+
+    &.form-column {
+      @include _form-column;
+    }
+  }
+
+  .mat-slide-toggle {
+    font-size: 0.875rem;
+  }
+
+  .ng-handset {
+    @include _ng-handset-form-column;
+  }
 }
-form {
-  .form-actions {
-    margin: 1rem 0;
+
+@mixin _form-column {
+  @include ng-flex-column-start-stretch;
+  .mat-form-field {
+    width: 50%;
+  }
+
+  .form-list {
+    width: 50%;
+    margin-bottom: 1.75rem;
+  }
+}
+
+@mixin _ng-handset-form-column {
+  .form-column {
+    align-items: stretch;
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+@mixin app-form-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $foreground: mat-color($color, foreground);
+  form {
+    .form-hint {
+      color: mat-color($foreground, secondary-text);
+    }
   }
 }

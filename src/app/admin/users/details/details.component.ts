@@ -4,9 +4,13 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
+import { Group } from '@core/models/groups';
 import { USERS_DETAIL_HEADING } from '@core/models/heading';
 import { PERMISSIONS } from '@core/models/permission';
+import { Role, ROLES_DATA } from '@core/models/roles';
 import { User } from '@core/models/users';
+import { GroupsService } from '@core/services/groups.service';
+import { RolesService } from '@core/services/roles.service';
 import { UsersService } from '@core/services/users.service';
 import { InjectBase } from '@core/shared/inject.base';
 import { customAnimation } from 'projects/templates/src/public-api';
@@ -26,8 +30,14 @@ export class DetailsComponent extends InjectBase implements OnInit {
   permission = PERMISSIONS.Admin.users.details;
   active: 'profile' | 'credentials' | 'services' | 'logs' = 'profile';
   user!: User;
-
-  constructor(injector: Injector, private users: UsersService) {
+  roles!: Role[];
+  groups!: Group[];
+  constructor(
+    injector: Injector,
+    private usersService: UsersService,
+    private rolesService: RolesService,
+    private groupsService: GroupsService
+  ) {
     super(injector);
   }
 
@@ -35,12 +45,14 @@ export class DetailsComponent extends InjectBase implements OnInit {
     this.initHeading(USERS_DETAIL_HEADING);
     this.initTabsRoute();
     this.routerProcess();
+    this.initRoles();
+    this.initGroups();
   }
 
   private routerProcess(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((data) => {
       if (data) {
-        const user = this.users.getUserByID(data.id);
+        const user = this.usersService.getUserByID(data.id);
         if (user) {
           this.user = user;
           this.changeDetectorRef.markForCheck();
@@ -50,6 +62,20 @@ export class DetailsComponent extends InjectBase implements OnInit {
 
       this.router.navigateByUrl('/not-found');
     });
+  }
+
+  private initRoles(): void {
+    this.rolesService
+      .getRoles$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((roles) => (this.roles = roles));
+  }
+
+  private initGroups(): void {
+    this.groupsService
+      .getGroups$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((groups) => (this.groups = groups));
   }
 
   private initTabsRoute(): void {

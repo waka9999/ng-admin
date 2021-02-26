@@ -7,34 +7,39 @@
   <mat-tab-group>
     <mat-tab label="信息">
       <ng-template matTabContent>
-        <app-user-info [user]="user"></app-user-info>
+        <app-user-info
+          [user]="user"
+          [roles]="roles"
+          [groups]="groups"
+          [editable]="true"
+        ></app-user-info>
       </ng-template>
     </mat-tab>
     <mat-tab label="凭据">
       <p>
-        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper
-        velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse
-        fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget
-        venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
-        non, imperdiet ipsum.
+        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum
+        semper velit eget gravida. Sed finibus eget lacus sed semper.
+        Suspendisse fringilla, tellus in molestie cursus, sapien purus volutpat
+        lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit,
+        consequat purus non, imperdiet ipsum.
       </p>
     </mat-tab>
     <mat-tab label="服务">
       <p>
-        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper
-        velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse
-        fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget
-        venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
-        non, imperdiet ipsum.
+        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum
+        semper velit eget gravida. Sed finibus eget lacus sed semper.
+        Suspendisse fringilla, tellus in molestie cursus, sapien purus volutpat
+        lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit,
+        consequat purus non, imperdiet ipsum.
       </p>
     </mat-tab>
     <mat-tab label="日志">
       <p>
-        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum semper
-        velit eget gravida. Sed finibus eget lacus sed semper. Suspendisse
-        fringilla, tellus in molestie cursus, sapien purus volutpat lacus, eget
-        venenatis erat est vitae libero. Aliquam et orci hendrerit, consequat purus
-        non, imperdiet ipsum.
+        Integer iaculis ultrices elit, sed venenatis eros. Vivamus interdum
+        semper velit eget gravida. Sed finibus eget lacus sed semper.
+        Suspendisse fringilla, tellus in molestie cursus, sapien purus volutpat
+        lacus, eget venenatis erat est vitae libero. Aliquam et orci hendrerit,
+        consequat purus non, imperdiet ipsum.
       </p>
     </mat-tab>
   </mat-tab-group>
